@@ -3,22 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>elamore</title>
+    <title>Login - Elamore</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
 
     <style>
         .dropdown:hover .dropdown-menu {
             display: block;
-        }
-
-        .hover-shadow:hover {
-            box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .transition {
-            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -111,7 +102,7 @@
                     <li class="nav-item"><a class="nav-link text-white link-danger" href="promo.html">Promo</a></li>
                     <li class="nav-item"><a class="nav-link text-white link-danger" href="tentang_kami.html">Tentang Kami</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white link-danger opacity-75" href="produk.html" id="produk" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
+                        <a class="nav-link dropdown-toggle text-white link-danger" href="produk.html" id="produk" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
                         <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produk">
                             <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
                             <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
@@ -122,89 +113,61 @@
                 </ul>
             </div>
         </div>
-    </nav>
-    
-    <section id="jenis-buket" class=" mt-5">
-        <div class="container">
-          <h2 class="text-center text-danger fw-bold mb-5">Buket Bunga</h2>
-          
-          <div class="row mb-4">
-            <div class="col-md-4 ms-auto">
-              <select id="filterHarga" class="form-select">
-                <option value="default">Urutkan berdasarkan</option>
-                <option value="asc">Harga Termurah</option>
-                <option value="desc">Harga Termahal</option>
-              </select>
-            </div>
-          </div>
-          
-          <!-- Card Section -->
-          <div class="mb-5">
-            <div class="row g-4">
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <img src="images/buket_bunga/buket_bunga6.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <img src="images/buket_bunga/buket_bunga5.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <img src="images/buket_bunga/buket_bunga4.jpeg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <img src="images/buket_bunga/buket_bunga3.jpeg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <img src="images/buket_bunga/buket_bunga2.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <img src="images/buket_bunga/buket_bunga.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+    </nav>        
+
+    <div class="container py-5">
+        <h2 class="mb-4 text-center fw-bold">Akun Saya</h2>
+      
+        <!-- Info Profil -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-header bg-danger text-white fw-semibold">Info Profil</div>
+          <div class="card-body">
+            <p><strong>Nama:</strong> John Doe</p>
+            <p><strong>Email:</strong> johndoe@example.com</p>
+            <button class="btn btn-outline-danger btn-sm">Edit Profil</button>
           </div>
         </div>
-      </section>
+      
+        <!-- Alamat Pengiriman -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-header bg-danger text-white fw-semibold">Alamat Pengiriman</div>
+          <div class="card-body">
+            <p><strong>Alamat Utama:</strong> Jl. Mawar No. 123, Bandung</p>
+            <button class="btn btn-outline-danger btn-sm">Kelola Alamat</button>
+          </div>
+        </div>
+      
+        <!-- Riwayat Pesanan -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-header bg-danger text-white fw-semibold">Riwayat Pesanan</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Buket Mawar Merah
+                <span class="badge bg-success">Selesai</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Buket Ulang Tahun
+                <span class="badge bg-warning text-dark">Sedang Diproses</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      
+        <!-- Pengaturan Akun -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-header bg-danger text-white fw-semibold">Pengaturan Akun</div>
+          <div class="card-body">
+            <button class="btn btn-outline-secondary btn-sm mb-2 w-100">Ganti Password</button>
+            <button class="btn btn-outline-danger btn-sm w-100">Hapus Akun</button>
+          </div>
+        </div>
+      
+        <!-- Tombol Logout -->
+        <div class="text-end">
+          <button class="btn btn-danger">Logout</button>
+        </div>
+      </div>
 
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Elamore. All rights reserved.</p>
