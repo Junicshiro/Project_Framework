@@ -1,0 +1,100 @@
+<!-- manajemen_produk.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manajemen Produk</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css"/>
+</head>
+<body style="background-color: #feedf3;">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark" style="background-color: #E91E63;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <span class="navbar-brand ms-2">Admin Elamore</span>
+    </div>
+  </nav>
+
+  <!-- Sidebar Offcanvas (untuk semua ukuran layar) -->
+  <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebarMenu" style="background-color: #ff71a3;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+            <a href="admin_dashboard.html" class="nav-link text-white active">
+                <i class="bi bi-house-door me-2"></i> Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+          <a href="manajemen_produk.html" class="nav-link text-white active">
+            <i class="bi bi-box me-2"></i> Produk
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="manajemen_pesanan.html" class="nav-link text-white">
+            <i class="bi bi-bag me-2"></i> Pesanan
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="manajemen_pengguna.html" class="nav-link text-white">
+            <i class="bi bi-people me-2"></i> Pengguna
+          </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-white">
+              <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="container-fluid px-4 py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-people"></i> Manajemen Pengguna</h2>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Cari pengguna..." id="searchProduk">
+    </div>
+
+<!-- Contoh Tabel menggunakan data dummy-->
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered text-center align-middle">
+            <thead class="table-danger">
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>USR-001</td>
+                    <td>Siti Nurhaliza</td>
+                    <td>siti@example.com</td>
+                    <td><span class="badge bg-success">Aktif</span></td>
+                    <td>
+                        <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

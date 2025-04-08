@@ -1,75 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin Elamore</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" />
     <style>
-        body {
-            display: flex;
-        }
-        #sidebar {
-            width: 250px;
-            background: #343a40;
-            color: white;
-            height: 100vh;
-            padding: 15px;
-        }
-        #content {
-            flex-grow: 1;
-            padding: 20px;
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
-    <!-- Sidebar -->
-    <div id="sidebar">
-        <h3 class="text-center">Admin Panel</h3>
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-house"></i> Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-box"></i> Produk</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-cart"></i> Pesanan</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-person"></i> Pengguna</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-        </ul>
+<body style="background-color: #feedf3;">
+
+    <nav class="navbar navbar-dark" style="background-color: #E91E63;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="navbar-brand ms-2">Admin Elamore</span>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebarMenu" style="background-color: #ff71a3;">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="admin_dashboard.html" class="nav-link text-white active">
+                        <i class="bi bi-house-door me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="manajemen_produk.html" class="nav-link text-white active">
+                        <i class="bi bi-box me-2"></i> Produk
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="manajemen_pesanan.html" class="nav-link text-white">
+                        <i class="bi bi-bag me-2"></i> Pesanan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="manajemen_pengguna.html" class="nav-link text-white">
+                        <i class="bi bi-people me-2"></i> Pengguna
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white">
+                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    
-    <!-- Main Content -->
-    <div id="content">
-        <h2>Manajemen Produk</h2>
-        <button class="btn btn-success mb-3">Tambah Produk</button>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama Produk</th>
-                    <th>Harga</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Buket Mawar</td>
-                    <td>Rp 250.000</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm">Edit</button>
-                        <button class="btn btn-danger btn-sm">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Buket Uang</td>
-                    <td>Rp 300.000</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm">Edit</button>
-                        <button class="btn btn-danger btn-sm">Hapus</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
+    <div class="container-fluid px-4 py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="bi bi-house-door"></i> Dashboard</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-flower1"></i> Total Produk</h5>
+                        <p class="card-text">150</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-cart"></i> Total Pesanan</h5>
+                        <p class="card-text">75</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-people"></i> Total Pengguna</h5>
+                        <p class="card-text">50</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-cash-coin"></i> Pendapatan Bulan Ini</h5>
+                        <p class="card-text">Rp 10.000.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
