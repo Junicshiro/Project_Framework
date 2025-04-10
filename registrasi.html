@@ -116,51 +116,49 @@
     </nav>        
 
     <!-- Form Login -->
-    <div class="container py-5 align-items-center min-vh-100">
+    <div class="container py-5">
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="card shadow-lg border-0 rounded-4">
               <div class="card-body p-4">
-                <h3 class="card-title text-center mb-4 text-danger"><i class="bi bi-person-circle"></i> Login</h3>
+                <h3 class="card-title text-center mb-4 text-danger"><i class="bi bi-person-plus-fill"></i> Registrasi</h3>
                 
                 <form>
-                    <!-- Input Email/Username -->
-                    <div class="mb-3">
-                        <label class="form-label">Email atau Username</label>
-                        <input type="text" class="form-control" placeholder="Masukkan email atau username" required>
-                    </div>
+                  <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" placeholder="Masukkan nama Anda" required>
+                  </div>
     
-                    <!-- Input Password -->
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" placeholder="Masukkan password" required>
-                    </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Alamat Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="contoh@email.com" required>
+                  </div>
     
-                    <!-- Lupa Password -->
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <input type="checkbox" id="rememberMe">
-                            <label for="rememberMe">Ingat saya</label>
-                        </div>
-                        <a href="#" class="text-decoration-none text-danger">Lupa password?</a>
-                    </div>
+                  <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <textarea class="form-control" id="alamat" rows="2" placeholder="Masukkan alamat lengkap" required></textarea>
+                  </div>
     
-                    <!-- Tombol Login -->
-                    <div class="d-grid mt-3">
-                        <button type="submit" class="btn btn-danger">Login</button>
-                    </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Kata Sandi</label>
+                    <input type="password" class="form-control" id="password" placeholder="********" required>
+                  </div>
     
-                    <!-- Daftar Akun -->
-                    <p class="text-center mt-3">
-                        Belum punya akun? <a href="registrasi.html" class="text-danger">Daftar sekarang</a>
-                    </p>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="bi bi-person-check"></i> Daftar Sekarang
+                    </button>
+                  </div>
                 </form>
+    
+                <div class="text-center mt-3">
+                  <small>Sudah punya akun? <a href="login.html" class="text-decoration-none text-danger">Masuk di sini</a></small>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
 
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Elamore. All rights reserved.</p>
