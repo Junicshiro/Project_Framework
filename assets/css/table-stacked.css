@@ -1,0 +1,28 @@
+/* Aturan untuk tabel stacked di layar kecil */
+@media (max-width: 576px) {
+  table thead {
+    display: none; /* Sembunyikan header tabel */
+  }
+  table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border: none;
+  }
+  table tbody td::before {
+    content: attr(
+      data-label
+    ); /* Gunakan atribut data-label untuk menampilkan nama kolom */
+    font-weight: bold;
+    margin-right: 1rem;
+    color: #6c757d;
+  }
+}
