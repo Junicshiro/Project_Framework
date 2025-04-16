@@ -58,54 +58,87 @@
   </div>
 
   <!-- Konten Utama -->
-  <div class="container-fluid px-4 py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2><i class="bi bi-bag"></i> Manajemen Pesanan</h2>
-    </div>
+   <div class="min-vh-100">
+    <div class="container-fluid px-4 py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2><i class="bi bi-bag"></i> Manajemen Pesanan</h2>
+      </div>
 
-    <div class="row g-3 mb-3">
-        <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Cari pesanan...">
-        </div>
-        <div class="col-md-6">
-            <select class="form-select">
-                <option selected>Filter Status</option>
-                <option>Menunggu Konfirmasi</option>
-                <option>Dikirim</option>
-                <option>Selesai</option>
-                <option>Dibatalkan</option>
-            </select>
-        </div>
-    </div>
+      <div class="row g-3 mb-3">
+          <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Cari pesanan...">
+          </div>
+          <div class="col-md-6">
+              <select class="form-select">
+                  <option selected>Filter Status</option>
+                  <option>Menunggu Konfirmasi</option>
+                  <option>Dikirim</option>
+                  <option>Selesai</option>
+                  <option>Dibatalkan</option>
+              </select>
+          </div>
+      </div>
 
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered text-center align-middle">
-            <thead class="table-danger">
-                <tr>
-                    <th>ID Pesanan</th>
-                    <th>Nama Pelanggan</th>
-                    <th>Tanggal</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>ORD-1001</td>
-                    <td>Andi</td>
-                    <td>2025-04-08</td>
-                    <td>Rp 350.000</td>
-                    <td><span class="badge bg-warning text-dark">Menunggu Konfirmasi</span></td>
-                    <td>
-                        <button class="btn btn-success btn-sm me-2"><i class="bi bi-check-circle"></i></button>
-                        <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <div class="table-responsive d-none d-sm-block">
+          <table class="table table-hover table-bordered text-center align-middle">
+              <thead class="table-danger">
+                  <tr>
+                      <th>ID Pesanan</th>
+                      <th>Gambar</th>
+                      <th>Nama Pelanggan</th>
+                      <th>Tanggal</th>
+                      <th>Total</th>
+                      <th>Aksi</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>ORD-1001</td>
+                      <td>
+                        <img src="images/buket_bunga/buket_bunga.jpg" alt="Buket Mawar Merah" class="mx-auto d-block" style="width: 60px; height: auto; border-radius: 8px;">
+                      </td>
+                      <td>Andi</td>
+                      <td>2025-04-08</td>
+                      <td>Rp 350.000</td>
+                      <td>
+                          <button class="btn btn-success btn-sm me-2"><i class="bi bi-check-circle"></i></button>
+                          <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+    <!-- Tampilkan hanya di perangkat mobile -->
+    <div class="d-block d-sm-none px-3">
+
+      <!-- Pesanan 1 -->
+      <div class="card mb-3 shadow-sm border-0" style="border-radius: 12px;">
+        <div class="row g-0 align-items-center">
+          <div class="col-4 ps-2">
+            <img src="images/buket_bunga/buket_bunga.jpg" class="img-fluid rounded" alt="Buket Mawar Merah" style="border-radius: 10px;">
+          </div>
+          <div class="col-8">
+            <div class="card-body p-2">
+              <h6 class="card-title fw-bold mb-1 text-truncate">Pesanan #ORD-1001</h6>
+              <div class="small text-muted mb-1">Pelanggan: <span class="text-dark">Andi</span></div>
+              <div class="small text-muted mb-1">Tanggal: <span class="text-dark">2025-04-08</span></div>
+              <div class="small text-muted mb-1">Total: <span class="text-success fw-semibold">Rp 350.000</span></div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-success flex-fill"><i class="bi bi-check-circle"></i> Konfirmasi</button>
+                <button class="btn btn-sm btn-outline-danger flex-fill"><i class="bi bi-x-circle"></i> Tolak</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Elamore. All rights reserved.</p>
+  </footer>
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
