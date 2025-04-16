@@ -111,7 +111,7 @@
                     <li class="nav-item"><a class="nav-link text-white link-danger" href="promo.html">Promo</a></li>
                     <li class="nav-item"><a class="nav-link text-white link-danger" href="tentang_kami.html">Tentang Kami</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white link-danger opacity-75" href="produk.html" id="produk" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
+                        <a class="nav-link dropdown-toggle text-white link-danger" href="produk.html" id="produk" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
                         <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produk">
                             <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
                             <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
@@ -143,6 +143,10 @@
             <div class="row g-4">
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                  <!-- Favorite button (floating) -->
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
                   <img src="images/buket_uang/buket_uang.jpg" class="card-img-top" alt="Buket Mawar 1">
                   <div class="card-body text-center">
                     <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
@@ -153,6 +157,10 @@
               </div>
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                  <!-- Favorite button (floating) -->
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
                   <img src="images/buket_uang/buket_uang1.jpg" class="card-img-top" alt="Buket Mawar 1">
                   <div class="card-body text-center">
                     <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
@@ -163,6 +171,10 @@
               </div>
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                  <!-- Favorite button (floating) -->
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
                   <img src="images/buket_uang/buket_uang2.jpg" class="card-img-top" alt="Buket Mawar 1">
                   <div class="card-body text-center">
                     <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
@@ -173,6 +185,10 @@
               </div>
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                  <!-- Favorite button (floating) -->
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
                   <img src="images/buket_uang/buket_uang3.jpg" class="card-img-top" alt="Buket Mawar 1">
                   <div class="card-body text-center">
                     <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
@@ -183,6 +199,10 @@
               </div>
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                  <!-- Favorite button (floating) -->
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
                   <img src="images/buket_uang/buket_uang4.jpg" class="card-img-top" alt="Buket Mawar 1">
                   <div class="card-body text-center">
                     <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
@@ -193,6 +213,10 @@
               </div>
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                  <!-- Favorite button (floating) -->
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
                   <img src="images/buket_uang/buket_uang5.jpg" class="card-img-top" alt="Buket Mawar 1">
                   <div class="card-body text-center">
                     <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
@@ -215,6 +239,26 @@
         document.getElementById('produk').addEventListener('click', function(event) {
             // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
             window.location.href = 'produk.html';
+        });
+
+        // Ambil semua tombol favorite
+        const favoriteButtons = document.querySelectorAll('.btn[title="Tambah ke Favorit"]');
+
+        favoriteButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const icon = button.querySelector('i');
+
+            // Toggle class ikon dari bi-heart ke bi-heart-fill dan sebaliknya
+            if (icon.classList.contains('bi-heart')) {
+              icon.classList.remove('bi-heart');
+              icon.classList.add('bi-heart-fill');
+              icon.classList.add('text-danger'); // warna merah
+            } else {
+              icon.classList.remove('bi-heart-fill');
+              icon.classList.remove('text-danger');
+              icon.classList.add('bi-heart');
+            }
+          });
         });
     </script>
 </body>
