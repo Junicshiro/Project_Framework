@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>elamore</title>
+    <title>Checkout - Elamore</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
 
@@ -24,8 +24,8 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <div class="d-flex" style="width: 40%;">
-                    <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchDesktop">
-                    <button class="btn btn-light" type="button" id="btnSearchDesktop">Cari</button>
+                  <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchDesktop">
+                  <button class="btn btn-light" type="button" id="btnSearchDesktop">Cari</button>
                 </div>
             </div>
 
@@ -78,8 +78,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
-                                <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
+                              <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
+                              <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
                             </div>
                         </div>
                     </div>
@@ -111,50 +111,38 @@
                 </ul>
             </div>
         </div>
-    </nav>            
+    </nav>
+  <div class="container py-5">
+    <h2 class="mb-4">Checkout</h2>
 
-    <!-- Konten Halaman Keranjang -->
-    <section class="container py-4 min-vh-100">
-        <h2 class="text-danger text-center mb-4">Keranjang Belanja</h2>
-    
-        <div class="table-responsive">
-            <table class="table align-middle table-bordered d-none" id="keranjang-table">
-                <tbody id="cart-body">
-                    
-                </tbody>
-                <tfoot class="table-light">
-                    <tr>
-                        <td class="text-start fw-bold">Total Harga:</td>
-                        <td class="text-center fw-bold text-danger" id="total-harga">Rp 0</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+    <div id="keranjang-checkout" class="mb-4">
+      <!-- Produk akan ditampilkan di sini -->
+    </div>
 
-        <div id="keranjang-kosong" class="text-center py-5 d-none">
-            <h4 class="fw-bold text-muted mb-3">Keranjang Anda Kosong</h4>
-            <a href="produk.html" class="btn btn-danger rounded-pill px-4 py-2">Lihat Produk</a>
-        </div>
-    
-        <div class="text-end mt-3">
-            <a href="checkout.html" class="btn btn-success btn-lg d-none" id="lanjut-pembayaran">Lanjut ke Pembayaran</a>
-        </div>
-    </section>
-    
-    
+    <form id="checkoutForm">
+      <h5 class="mb-3">Informasi Pengiriman</h5>
+      <div class="mb-3">
+        <label for="nama" class="form-label">Nama</label>
+        <input type="text" class="form-control" id="nama" required />
+      </div>
+      <div class="mb-3">
+        <label for="alamat" class="form-label">Alamat</label>
+        <textarea class="form-control" id="alamat" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="nomor" class="form-label">Nomor HP</label>
+        <input type="tel" class="form-control" id="nomor" required />
+      </div>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Elamore. All rights reserved.</p>
-    </footer>
+      <h5 class="mt-4 mb-3">Total: <span id="checkout-total" class="text-danger">Rp 0</span></h5>
 
-    <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('produk').addEventListener('click', function(event) {
-            // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
-            window.location.href = 'produk.html';
-        });
+      <button type="submit" class="btn btn-danger rounded-pill px-4">Konfirmasi Pembayaran</button>
+    </form>
+  </div>
 
-        document.addEventListener("DOMContentLoaded", function () {
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
         const ikonUser = document.querySelector(".bi-person-circle");
 
         if (ikonUser) {
@@ -175,113 +163,64 @@
     const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
     const userId = elamoreUser?.id || null;
 
-    document.addEventListener("DOMContentLoaded", function () {
-    if (!userId) {
-        tampilkanKeranjang([]);
+    let totalHarga = 0;
+    let keranjang = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!userId) {
+        document.getElementById("keranjang-checkout").innerHTML = "<p class='text-muted'>Silakan login terlebih dahulu.</p>";
+        document.getElementById("checkoutForm").classList.add("d-none");
         return;
-    }
+      }
 
-    const cartBody = document.getElementById("cart-body");
-    const totalHargaEl = document.getElementById("total-harga");
-
-    function tampilkanKeranjang(data) {
-        const cartBody = document.getElementById("cart-body");
-        const totalHargaEl = document.getElementById("total-harga");
-        const tabel = document.getElementById("keranjang-table");
-        const kosong = document.getElementById("keranjang-kosong");
-        const tombolBayar = document.getElementById("lanjut-pembayaran");
-
-        if (!data || data.length === 0) {
-            tabel.classList.add("d-none");
-            kosong.classList.remove("d-none");
-            tombolBayar.classList.add("d-none"); // 👉 sembunyikan tombol
-            totalHargaEl.innerText = "Rp 0";
-            return;
-        } else {
-            tabel.classList.remove("d-none");
-            kosong.classList.add("d-none");
-            tombolBayar.classList.remove("d-none"); // 👉 tampilkan kembali tombol
-        }
-
-        let totalHarga = 0;
-        cartBody.innerHTML = "";
-
-        data.forEach(item => {
-        const subtotal = item.product.harga * item.quantity;
-        totalHarga += subtotal;
-
-        cartBody.innerHTML += `
-            <tr data-id="${item.id}">
-            <td>
-                <div class="d-flex">
-                <img src="${item.product.gambar}" class="img-fluid me-3" width="70" alt="${item.product.nama_produk}">
-                <div>
-                    <div class="fw-bold">${item.product.nama_produk}</div>
-                    <div>Harga: Rp ${item.product.harga.toLocaleString("id-ID")}</div>
-                    <div class="d-flex align-items-center my-2">
-                    <button class="btn btn-sm btn-outline-secondary minus-btn">-</button>
-                    <input type="number" min="1" value="${item.quantity}" class="form-control form-control-sm text-center mx-2 jumlah-input" style="width: 60px;">
-                    <button class="btn btn-sm btn-outline-secondary plus-btn">+</button>
-                    </div>
-                    <button class="btn btn-sm btn-danger delete-btn"><i class="bi bi-trash"></i> Hapus</button>
-                </div>
-                </div>
-            </td>
-            <td class="text-center align-middle">Rp ${subtotal.toLocaleString("id-ID")}</td>
-            </tr>
-        `;
-        });
-
-        totalHargaEl.innerText = `Rp ${totalHarga.toLocaleString("id-ID")}`;
-        aktifkanEventKeranjang();
-    }
-
-    function aktifkanEventKeranjang() {
-        document.querySelectorAll(".plus-btn").forEach((btn, index) => {
-        btn.addEventListener("click", () => ubahJumlah(index, 1));
-        });
-        document.querySelectorAll(".minus-btn").forEach((btn, index) => {
-        btn.addEventListener("click", () => ubahJumlah(index, -1));
-        });
-        document.querySelectorAll(".delete-btn").forEach((btn, index) => {
-        btn.addEventListener("click", () => hapusProduk(index));
-        });
-    }
-
-    function ubahJumlah(index, delta) {
-        const row = document.querySelectorAll("tbody tr")[index];
-        const input = row.querySelector(".jumlah-input");
-        let qty = parseInt(input.value) + delta;
-        if (qty < 1) qty = 1;
-        input.value = qty;
-
-        fetch(`http://localhost:8000/api/cart/${row.dataset.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ quantity: qty })
-        }).then(() => {
-        ambilKeranjang();
-        });
-    }
-
-    function hapusProduk(index) {
-        const row = document.querySelectorAll("tbody tr")[index];
-        const cartId = row.dataset.id;
-
-        fetch(`http://localhost:8000/api/cart/${cartId}`, {
-        method: "DELETE"
-        }).then(() => {
-        ambilKeranjang();
-        });
-    }
-
-    function ambilKeranjang() {
-        fetch(`http://localhost:8000/api/cart/${userId}`)
+      fetch(`http://localhost:8000/api/cart/${userId}`)
         .then(res => res.json())
-        .then(data => tampilkanKeranjang(data));
-    }
+        .then(data => {
+          keranjang = data;
+          if (data.length === 0) {
+            document.getElementById("keranjang-checkout").innerHTML = "<p class='text-muted'>Keranjang kosong.</p>";
+            document.getElementById("checkoutForm").classList.add("d-none");
+            return;
+          }
 
-    ambilKeranjang();
+          const isi = data.map(item => {
+            const subtotal = item.quantity * item.product.harga;
+            totalHarga += subtotal;
+            return `
+              <div class="mb-3">
+                <strong>${item.product.nama_produk}</strong> (x${item.quantity}) - Rp ${subtotal.toLocaleString("id-ID")}
+              </div>
+            `;
+          }).join("");
+
+          document.getElementById("keranjang-checkout").innerHTML = isi;
+          document.getElementById("checkout-total").innerText = `Rp ${totalHarga.toLocaleString("id-ID")}`;
+        });
+
+      document.getElementById("checkoutForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nama = document.getElementById("nama").value;
+        const alamat = document.getElementById("alamat").value;
+        const nomor = document.getElementById("nomor").value;
+
+        fetch("http://localhost:8000/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            user_id: userId,
+            nama,
+            alamat,
+            nomor_hp: nomor,
+            items: keranjang,
+            total_harga: totalHarga,
+          }),
+        })
+        .then(res => res.json())
+        .then(data => {
+          alert("Pesanan berhasil dibuat!");
+          window.location.href = "akun_user.html";
+        });
+      });
     });
 
     // Desktop
@@ -318,6 +257,6 @@
       document.getElementById("btnSearchMobile").click();
     }
   });
-    </script>
+  </script>
 </body>
 </html>

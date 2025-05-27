@@ -32,10 +32,10 @@
             </a>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <form class="d-flex" style="width: 40%;">
-                    <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search">
-                    <button class="btn btn-light" type="submit">Cari</button>
-                </form>
+                <div class="d-flex" style="width: 40%;">
+                  <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchDesktop">
+                  <button class="btn btn-light" type="button" id="btnSearchDesktop">Cari</button>
+                </div>
             </div>
 
             <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
@@ -86,12 +86,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Cari produk...">
-                                    <button class="btn btn-danger" type="submit">Cari</button>
-                                </div>
-                            </form>
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
+                              <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,13 +122,13 @@
         </div>
     </nav>
     
-    <section id="jenis-buket" class=" mt-5">
+    <section id="jenis-buket" class=" mt-5 min-vh-100">
         <div class="container">
           <h2 class="text-center text-danger fw-bold mb-5">Buket Snack</h2>
           
           <div class="row mb-4">
             <div class="col-md-4 ms-auto">
-              <select id="filterHarga" class="form-select">
+              <select id="sortHarga" class="form-select">
                 <option value="default">Urutkan berdasarkan</option>
                 <option value="asc">Harga Termurah</option>
                 <option value="desc">Harga Termahal</option>
@@ -140,91 +138,8 @@
           
           <!-- Card Section -->
           <div class="mb-5">
-            <div class="row g-4">
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack2.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack3.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack4.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack5.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack6.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
+            <div class="row g-4" id="buket-snack-list">
+              
             </div>
           </div>
         </div>
@@ -241,25 +156,200 @@
             window.location.href = 'produk.html';
         });
 
-        // Ambil semua tombol favorite
-        const favoriteButtons = document.querySelectorAll('.btn[title="Tambah ke Favorit"]');
+        // // Ambil semua tombol favorite
+        // const favoriteButtons = document.querySelectorAll('.btn[title="Tambah ke Favorit"]');
 
-        favoriteButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const icon = button.querySelector('i');
+        // favoriteButtons.forEach(button => {
+        //   button.addEventListener('click', () => {
+        //     const icon = button.querySelector('i');
 
-            // Toggle class ikon dari bi-heart ke bi-heart-fill dan sebaliknya
-            if (icon.classList.contains('bi-heart')) {
-              icon.classList.remove('bi-heart');
-              icon.classList.add('bi-heart-fill');
-              icon.classList.add('text-danger'); // warna merah
+        //     // Toggle class ikon dari bi-heart ke bi-heart-fill dan sebaliknya
+        //     if (icon.classList.contains('bi-heart')) {
+        //       icon.classList.remove('bi-heart');
+        //       icon.classList.add('bi-heart-fill');
+        //       icon.classList.add('text-danger'); // warna merah
+        //     } else {
+        //       icon.classList.remove('bi-heart-fill');
+        //       icon.classList.remove('text-danger');
+        //       icon.classList.add('bi-heart');
+        //     }
+        //   });
+        // });
+
+        let produkSnack = [];
+
+        function tampilkanProduk(data) {
+          const list = document.getElementById("buket-snack-list");
+          list.innerHTML = data.map(buatCardProduk).join("");
+
+          setTimeout(() => {
+            document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
+              btn.addEventListener("click", () => {
+                if (!userId) return alert("Silakan login terlebih dahulu.");
+                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+
+                fetch("http://localhost:8000/api/favorites", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                  body: JSON.stringify({ user_id: userId, product_id: productId }),
+                }).then(res => res.json()).then(() => {
+                  const icon = btn.querySelector("i");
+                  icon.classList.remove("bi-heart");
+                  icon.classList.add("bi-heart-fill", "text-danger");
+                });
+              });
+            });
+
+            document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
+              btn.addEventListener("click", () => {
+                if (!userId) return alert("Silakan login terlebih dahulu.");
+                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+
+                fetch("http://localhost:8000/api/cart", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                  body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
+                }).then(res => res.json()).then(() => {
+                  alert("Produk berhasil ditambahkan ke keranjang.");
+                });
+              });
+            });
+          }, 300);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const ikonUser = document.querySelector(".bi-person-circle");
+        const list = document.getElementById("buket-snack-list");
+
+        if (ikonUser) {
+          ikonUser.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const user = localStorage.getItem("elamoreUser");
+
+            if (user) {
+              window.location.href = "akun_user.html"; // Sudah login
             } else {
-              icon.classList.remove('bi-heart-fill');
-              icon.classList.remove('text-danger');
-              icon.classList.add('bi-heart');
+              window.location.href = "login.html"; // Belum login
             }
           });
-        });
+        }
+
+        // Ambil semua produk dari API dan filter hanya buket snack
+        fetch("http://localhost:8000/api/products")
+          .then(res => res.json())
+          .then(data => {
+            produkSnack = data.filter(p => p.kategori.toLowerCase() === "buket snack");
+            tampilkanProduk(produkSnack);
+
+            // Tambah event listener favorit dan keranjang
+            setTimeout(() => {
+              document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
+                btn.addEventListener("click", () => {
+                  if (!userId) return alert("Silakan login terlebih dahulu.");
+                  const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+
+                  fetch("http://localhost:8000/api/favorites", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify({ user_id: userId, product_id: productId }),
+                  })
+                    .then(res => res.json())
+                    .then(() => {
+                      const icon = btn.querySelector("i");
+                      icon.classList.remove("bi-heart");
+                      icon.classList.add("bi-heart-fill", "text-danger");
+                    });
+                });
+              });
+
+              document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
+                btn.addEventListener("click", () => {
+                  if (!userId) return alert("Silakan login terlebih dahulu.");
+                  const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+
+                  fetch("http://localhost:8000/api/cart", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
+                  })
+                    .then(res => res.json())
+                    .then(() => alert("Produk berhasil ditambahkan ke keranjang."));
+                });
+              });
+            }, 300);
+
+            document.getElementById("sortHarga").addEventListener("change", function () {
+              const value = this.value;
+
+              let data = [...produkSnack]; // array salinan agar tidak ubah data asli
+
+              if (value === "asc") {
+                data.sort((a, b) => a.harga - b.harga);
+              } else if (value === "desc") {
+                data.sort((a, b) => b.harga - a.harga);
+              }
+
+              tampilkanProduk(data);
+            });
+          });
+      });
+
+      const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
+      const userId = elamoreUser?.id || null;
+
+      function buatCardProduk(p) {
+        return `
+          <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition" data-id="${p.id}">
+              <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                <i class="bi bi-heart"></i>
+              </button>
+              <img src="${p.gambar}" class="card-img-top" alt="${p.nama_produk}">
+              <div class="card-body text-center">
+                <h5 class="card-title text-danger fw-semibold">${p.nama_produk}</h5>
+                <p class="card-text text-muted fs-5 mb-3">Rp ${p.harga.toLocaleString('id-ID')}</p>
+                <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Desktop
+  document.getElementById("btnSearchDesktop").addEventListener("click", function () {
+    const keyword = document.getElementById("searchDesktop").value.trim();
+    if (keyword) {
+      window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+    }
+  });
+
+  document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      document.getElementById("btnSearchDesktop").click();
+    }
+  });
+
+  // Mobile
+  document.getElementById("btnSearchMobile").addEventListener("click", function () {
+    const keyword = document.getElementById("searchMobile").value.trim();
+    if (keyword) {
+      // Tutup modal dulu
+      const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+      modal.hide();
+      setTimeout(() => {
+        window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+      }, 300);
+    }
+  });
+
+  document.getElementById("searchMobile").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      document.getElementById("btnSearchMobile").click();
+    }
+  });
     </script>
 </body>
 </html>

@@ -209,6 +209,24 @@
             // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
             window.location.href = 'produk.html';
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const ikonUser = document.querySelector(".bi-person-circle");
+
+        if (ikonUser) {
+        ikonUser.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const user = localStorage.getItem("elamoreUser");
+
+            if (user) {
+            window.location.href = "akun_user.html"; // Sudah login
+            } else {
+            window.location.href = "login.html"; // Belum login
+            }
+        });
+        }
+    });
     </script>
 </body>
 </html>

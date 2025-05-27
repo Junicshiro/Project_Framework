@@ -23,10 +23,10 @@
             </a>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <form class="d-flex" style="width: 40%;">
-                    <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search">
-                    <button class="btn btn-light" type="submit">Cari</button>
-                </form>
+                <div class="d-flex" style="width: 40%;">
+                    <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchDesktop">
+                    <button class="btn btn-light" type="button" id="btnSearchDesktop">Cari</button>
+                </div>
             </div>
 
             <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
@@ -77,12 +77,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Cari produk...">
-                                    <button class="btn btn-danger" type="submit">Cari</button>
-                                </div>
-                            </form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
+                                <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,10 +121,10 @@
               <div class="card-body p-4">
                 <h3 class="card-title text-center mb-4 text-danger"><i class="bi bi-person-plus-fill"></i> Registrasi</h3>
                 
-                <form>
+                <form id="form-registrasi">
                   <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="nama" placeholder="Masukkan nama Anda" required>
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
                   </div>
     
                   <div class="mb-3">
@@ -135,8 +133,8 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="email" class="form-label">No HP</label>
-                    <input type="email" class="form-control" id="nomor" placeholder="Masukkan nomor HP Anda" required>
+                    <label for="nomor" class="form-label">No HP</label>
+                    <input type="text" class="form-control" id="nomor" placeholder="Masukkan nomor HP Anda" required>
                   </div>
     
                   <div class="mb-3">
@@ -175,6 +173,80 @@
             // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
             window.location.href = 'produk.html';
         });
+
+        const form = document.getElementById("form-registrasi");
+        form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        nomor: document.getElementById("nomor").value,
+        alamat: document.getElementById("alamat").value,
+        password: document.getElementById("password").value,
+        };
+
+        console.log("Data yang akan dikirim:", data); // DEBUG
+
+        try {
+        const response = await fetch("http://localhost:8000/api/register", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        console.log("Response dari server:", result); // DEBUG
+        
+        if (response.ok) {
+            alert("Registrasi berhasil!");
+            form.reset();
+            window.location.href = "login.html";
+        } else {
+            alert("Registrasi gagal: " + JSON.stringify(result));
+        }
+        } catch (err) {
+        alert("Terjadi kesalahan: " + err.message);
+        }
+    });
+
+    // Desktop
+  document.getElementById("btnSearchDesktop").addEventListener("click", function () {
+    const keyword = document.getElementById("searchDesktop").value.trim();
+    if (keyword) {
+      window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+    }
+  });
+
+  document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      document.getElementById("btnSearchDesktop").click();
+    }
+  });
+
+  // Mobile
+  document.getElementById("btnSearchMobile").addEventListener("click", function () {
+    const keyword = document.getElementById("searchMobile").value.trim();
+    if (keyword) {
+      // Tutup modal dulu
+      const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+      modal.hide();
+      setTimeout(() => {
+        window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+      }, 300);
+    }
+  });
+
+  document.getElementById("searchMobile").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      document.getElementById("btnSearchMobile").click();
+    }
+  });
     </script>
 </body>
 </html>

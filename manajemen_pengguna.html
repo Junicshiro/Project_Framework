@@ -49,9 +49,9 @@
           </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white link-danger opacity-75">
-              <i class="bi bi-box-arrow-right me-2"></i> Logout
-            </a>
+          <button id="btnLogoutAdmin" class="nav-link text-white link-danger opacity-75 border-0 bg-transparent">
+            <i class="bi bi-box-arrow-right me-2"></i> Logout
+          </button>
         </li>
       </ul>
     </div>
@@ -64,9 +64,11 @@
         <h2><i class="bi bi-box"></i> Manajemen Pengguna</h2>
       </div>
 
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Cari pengguna..." id="searchProduk">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="searchUser" placeholder="Cari nama atau email pengguna...">
+        <button class="btn btn-outline-secondary" type="button" onclick="loadUsers()">Cari</button>
       </div>
+
 
       <div class="table-responsive d-none d-sm-block">
         <table class="table table-hover table-bordered text-center align-middle">
@@ -76,57 +78,200 @@
               <th>Nama</th>
               <th>Email</th>
               <th>Nomor</th>
-              <th>Status</th>
+              
               <th>Aksi</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>USR-001</td>              
-              <td>Siti Nurhaliza</td>
-              <td>siti@example.com</td>
-              <td>+62 812-xxxx-xxxx</td>
-              <td>
-                <span class="badge bg-success">
-                  Aktif
-                </span>
-              </td>
-              <td>
-                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i></button>
-                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
+          <tbody id="user-list">
+            
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- Tampilkan hanya di perangkat mobile -->
-    <div class="d-block d-sm-none px-3">
+    <div class="d-block d-sm-none px-3" id="user-cards">
 
-      <!-- Pengguna 1 -->
-      <div class="card mb-3 shadow-sm border-0" style="border-radius: 12px;">
-        <div class="card-body">
-          <h6 class="card-title fw-bold mb-2 text-truncate">Pengguna #USR-001</h6>
-          <div class="small text-muted mb-1">Nama: <span class="text-dark">Siti Nurhaliza</span></div>
-          <div class="small text-muted mb-1">Email: <span class="text-dark">siti@example.com</span></div>
-          <div class="small text-muted mb-1">Nomor: <span class="text-dark">+62 812-xxxx-xxxx</span></div>
-          <div class="mb-2">
-            <span class="badge bg-success">Aktif</span>
-          </div>
-          <div class="d-flex gap-2">
-            <button class="btn btn-sm btn-outline-warning flex-fill"><i class="bi bi-pencil"></i> Edit</button>
-            <button class="btn btn-sm btn-outline-danger flex-fill"><i class="bi bi-trash"></i> Hapus</button>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
+
+  <!-- Modal Edit Pengguna -->
+<div class="modal fade" id="modalEditUser" tabindex="-1" aria-labelledby="modalEditUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formEditUser" class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalEditUserLabel">Edit Pengguna</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editUserId">
+        <div class="mb-3">
+          <label for="editUserName" class="form-label">Nama</label>
+          <input type="text" id="editUserName" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="editUserEmail" class="form-label">Email</label>
+          <input type="email" id="editUserEmail" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="editUserNomor" class="form-label">Nomor HP</label>
+          <input type="text" id="editUserNomor" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="editUserAlamat" class="form-label">Alamat</label>
+          <textarea id="editUserAlamat" class="form-control" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 
   <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Elamore. All rights reserved.</p>
   </footer>
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", loadUsers);
+function loadUsers() {
+  const query = document.getElementById("searchUser").value.toLowerCase();
+
+  fetch("http://localhost:8000/api/users")
+    .then(res => res.json())
+    .then(users => {
+      const tbody = document.getElementById("user-list");
+      const cards = document.getElementById("user-cards");
+      tbody.innerHTML = "";
+      cards.innerHTML = "";
+
+      const filtered = users.filter(user =>
+        user.name.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query)
+      );
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6">Tidak ada pengguna ditemukan.</td></tr>';
+        return;
+      }
+
+      filtered.forEach(user => {
+      // Tampilkan ke tabel desktop
+      tbody.innerHTML += `
+        <tr>
+          <td>USR-${String(user.id).padStart(3, "0")}</td>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>${user.nomor || "-"}</td>
+          
+          <td>
+            <button class="btn btn-warning btn-sm me-2" onclick="editUser(${user.id})"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-danger btn-sm" onclick="hapusUser(${user.id})"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+
+      // Tampilkan ke kartu mobile
+      cards.innerHTML += `
+        <div class="card mb-3 shadow-sm border-0" style="border-radius: 12px;">
+          <div class="card-body">
+            <h6 class="card-title fw-bold mb-2 text-truncate">Pengguna #USR-${String(user.id).padStart(3, "0")}</h6>
+            <div class="small text-muted mb-1">Nama: <span class="text-dark">${user.name}</span></div>
+            <div class="small text-muted mb-1">Email: <span class="text-dark">${user.email}</span></div>
+            <div class="small text-muted mb-1">Nomor: <span class="text-dark">${user.nomor || "-"}</span></div>
+            
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-warning flex-fill" onclick="editUser(${user.id})"><i class="bi bi-pencil"></i> Edit</button>
+              <button class="btn btn-sm btn-outline-danger flex-fill" onclick="hapusUser(${user.id})"><i class="bi bi-trash"></i> Hapus</button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    });
+
+}
+
+// Tampilkan modal edit
+function editUser(id) {
+  fetch(`http://localhost:8000/api/users`)
+    .then(res => res.json())
+    .then(users => {
+      const user = users.find(u => u.id === id);
+      if (!user) return;
+
+      document.getElementById("editUserId").value = user.id;
+      document.getElementById("editUserName").value = user.name;
+      document.getElementById("editUserEmail").value = user.email;
+      document.getElementById("editUserNomor").value = user.nomor || "";
+      document.getElementById("editUserAlamat").value = user.alamat || "";
+
+      new bootstrap.Modal(document.getElementById("modalEditUser")).show();
+    });
+}
+
+// Submit edit
+document.getElementById("formEditUser").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const id = document.getElementById("editUserId").value;
+  const data = {
+    name: document.getElementById("editUserName").value,
+    email: document.getElementById("editUserEmail").value,
+    nomor: document.getElementById("editUserNomor").value,
+    alamat: document.getElementById("editUserAlamat").value
+  };
+
+  const res = await fetch(`http://localhost:8000/api/users/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify(data)
+  });
+  const result = await res.json();
+
+  if (res.ok) {
+    alert("Berhasil diubah!");
+    bootstrap.Modal.getInstance(document.getElementById("modalEditUser")).hide();
+    loadUsers();
+  } else {
+    alert("Gagal: " + JSON.stringify(result));
+  }
+});
+
+// Hapus user
+function hapusUser(id) {
+  if (!confirm("Yakin ingin menghapus pengguna ini?")) return;
+
+  fetch(`http://localhost:8000/api/users/${id}`, {
+    method: "DELETE"
+  })
+  .then(res => res.json())
+  .then(() => {
+    alert("Pengguna dihapus.");
+    loadUsers();
+  });
+}
+
+// Panggil saat halaman dimuat
+document.addEventListener("DOMContentLoaded", loadUsers);
+
+document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
+  e.preventDefault();
+  // Hapus data admin dari localStorage
+  localStorage.removeItem("elamoreAdmin");
+  // Redirect ke halaman login admin
+  window.location.href = "admin_login.html";
+});
+
+const admin = localStorage.getItem("elamoreAdmin");
+  if (!admin) {
+    window.location.href = "admin_login.html"; // Redirect jika belum login
+  }
+</script>
+
 </body>
 </html>

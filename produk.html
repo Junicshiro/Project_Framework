@@ -32,10 +32,10 @@
             </a>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <form class="d-flex" style="width: 40%;">
-                    <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search">
-                    <button class="btn btn-light" type="submit">Cari</button>
-                </form>
+                <div class="d-flex" style="width: 40%;">
+                  <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchBar">
+                  <button class="btn btn-light" type="button" id="btnSearch">Cari</button>
+                </div>
             </div>
 
             <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
@@ -86,12 +86,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Cari produk...">
-                                    <button class="btn btn-danger" type="submit">Cari</button>
-                                </div>
-                            </form>
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
+                              <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +122,7 @@
         </div>
     </nav>
     
-    <section id="jenis-buket" class=" mt-5">
+    <section id="jenis-buket" class=" mt-5 min-vh-100">
         <div class="container">
           <h2 class="text-center text-danger fw-bold mb-5">Semua Produk</h2>
           
@@ -140,261 +138,8 @@
 
           <!-- Card Section -->
           <div class="mb-5">
-            <div class="row g-4">
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_bunga/buket_bunga6.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_bunga/buket_bunga5.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_bunga/buket_bunga4.jpeg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_bunga/buket_bunga3.jpeg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_bunga/buket_bunga2.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_bunga/buket_bunga.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_uang/buket_uang.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_uang/buket_uang1.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_uang/buket_uang2.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_uang/buket_uang3.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_uang/buket_uang4.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_uang/buket_uang5.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack2.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack3.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack4.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack5.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
-                  <!-- Favorite button (floating) -->
-                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <img src="images/buket_snack/buket_snack6.jpg" class="card-img-top" alt="Buket Mawar 1">
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-danger fw-semibold">Buket Mawar Merah</h5>
-                    <p class="card-text text-muted fs-5 mb-3">Rp 250.000</p>
-                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
-                  </div>
-                </div>
-              </div>
+            <div class="row g-4" id="produk-container">
+              <p class="text-center">Memuat produk...</p>
             </div>
           </div>
         </div>
@@ -412,24 +157,163 @@
         });
 
         // Ambil semua tombol favorite
-        const favoriteButtons = document.querySelectorAll('.btn[title="Tambah ke Favorit"]');
+        // const favoriteButtons = document.querySelectorAll('.btn[title="Tambah ke Favorit"]');
 
-        favoriteButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const icon = button.querySelector('i');
+        // favoriteButtons.forEach(button => {
+        //   button.addEventListener('click', () => {
+        //     const icon = button.querySelector('i');
 
-            // Toggle class ikon dari bi-heart ke bi-heart-fill dan sebaliknya
-            if (icon.classList.contains('bi-heart')) {
-              icon.classList.remove('bi-heart');
-              icon.classList.add('bi-heart-fill');
-              icon.classList.add('text-danger'); // warna merah
+        //     // Toggle class ikon dari bi-heart ke bi-heart-fill dan sebaliknya
+        //     if (icon.classList.contains('bi-heart')) {
+        //       icon.classList.remove('bi-heart');
+        //       icon.classList.add('bi-heart-fill');
+        //       icon.classList.add('text-danger'); // warna merah
+        //     } else {
+        //       icon.classList.remove('bi-heart-fill');
+        //       icon.classList.remove('text-danger');
+        //       icon.classList.add('bi-heart');
+        //     }
+        //   });
+        // });
+
+        const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
+        const userId = elamoreUser?.id || null;
+
+        let semuaProduk = [];
+
+        function tampilkanProduk(produkArray) {
+          const row = document.getElementById("produk-container");
+          row.innerHTML = "";
+
+          if (produkArray.length === 0) {
+            row.innerHTML = `<div class="col text-center text-muted">Produk tidak ditemukan.</div>`;
+            return;
+          }
+
+          produkArray.forEach(product => {
+            row.innerHTML += `
+              <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100 hover-shadow transition" data-id="${product.id}">
+                  <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
+                    <i class="bi bi-heart"></i>
+                  </button>
+                  <img src="${product.gambar}" class="card-img-top" alt="${product.nama_produk}">
+                  <div class="card-body text-center">
+                    <h5 class="card-title text-danger fw-semibold">${product.nama_produk}</h5>
+                    <p class="card-text text-muted fs-5 mb-3">Rp ${product.harga.toLocaleString('id-ID')}</p>
+                    <button type="button" class="btn btn-outline-danger rounded-pill px-4">Tambah ke Keranjang</button>
+                  </div>
+                </div>
+              </div>`;
+          });
+
+          setTimeout(() => {
+            // Tombol Favorit
+            document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
+              btn.addEventListener("click", () => {
+                if (!userId) return alert("Silakan login terlebih dahulu.");
+                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+
+                fetch("http://localhost:8000/api/favorites", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                  body: JSON.stringify({ user_id: userId, product_id: productId }),
+                }).then(res => res.json())
+                  .then(() => {
+                    const icon = btn.querySelector("i");
+                    icon.classList.remove("bi-heart");
+                    icon.classList.add("bi-heart-fill", "text-danger");
+                  });
+              });
+            });
+
+            // Tombol Keranjang
+            document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
+              btn.addEventListener("click", () => {
+                if (!userId) return alert("Silakan login terlebih dahulu.");
+                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+
+                fetch("http://localhost:8000/api/cart", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                  body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
+                }).then(res => res.json())
+                  .then(() => alert("Produk berhasil ditambahkan ke keranjang."));
+              });
+            });
+          }, 300);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const ikonUser = document.querySelector(".bi-person-circle");
+
+        if (ikonUser) {
+          ikonUser.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const user = localStorage.getItem("elamoreUser");
+
+            if (user) {
+              window.location.href = "akun_user.html"; // Sudah login
             } else {
-              icon.classList.remove('bi-heart-fill');
-              icon.classList.remove('text-danger');
-              icon.classList.add('bi-heart');
+              window.location.href = "login.html"; // Belum login
             }
           });
+        }
+
+        fetch("http://localhost:8000/api/products")
+          .then(response => response.json())
+          .then(products => {
+            semuaProduk = products;
+
+            // Ambil parameter q dari URL jika ada
+            const params = new URLSearchParams(window.location.search);
+            const keyword = params.get("q")?.toLowerCase();
+
+            let hasil = semuaProduk;
+
+            if (keyword) {
+              hasil = semuaProduk.filter(p =>
+                p.nama_produk.toLowerCase().includes(keyword) ||
+                p.kategori.toLowerCase().includes(keyword)
+              );
+
+              // Ganti judul menjadi hasil pencarian
+              const h2 = document.querySelector("h2.text-danger");
+              if (h2) h2.innerText = `Hasil pencarian untuk: "${keyword}"`;
+            }
+
+            tampilkanProduk(hasil);
+          });
+
+        document.getElementById("filterHarga").addEventListener("change", function () {
+          const selected = this.value;
+          let hasil = [...semuaProduk];
+
+          if (selected === "asc") {
+            hasil.sort((a, b) => a.harga - b.harga);
+          } else if (selected === "desc") {
+            hasil.sort((a, b) => b.harga - a.harga);
+          }
+
+          tampilkanProduk(hasil);
         });
+      });
+
+      // Pencarian produk dari dalam halaman produk.html
+      document.getElementById("btnSearch").addEventListener("click", function () {
+        const keyword = document.getElementById("searchBar").value.trim();
+        if (keyword) {
+          window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+        }
+      });
+
+      document.getElementById("searchBar").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          document.getElementById("btnSearch").click();
+        }
+      });
     </script>
 </body>
 </html>
