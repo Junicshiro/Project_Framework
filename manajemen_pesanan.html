@@ -144,7 +144,7 @@
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-  const API = "http://localhost:8000/api/orders";
+  const API = "https://elamore-backend-production.up.railway.app/api/orders";
   let semuaPesanan = [];
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -276,7 +276,7 @@
 
   // Update status ke Laravel
   function ubahStatus(orderId, statusBaru) {
-    fetch(`http://localhost:8000/api/orders/${orderId}/status`, {
+    fetch(`https://elamore-backend-production.up.railway.app/api/orders/${orderId}/status`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

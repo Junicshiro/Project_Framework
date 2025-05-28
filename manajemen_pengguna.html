@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", loadUsers);
 function loadUsers() {
   const query = document.getElementById("searchUser").value.toLowerCase();
 
-  fetch("http://localhost:8000/api/users")
+  fetch("https://elamore-backend-production.up.railway.app/api/users")
     .then(res => res.json())
     .then(users => {
       const tbody = document.getElementById("user-list");
@@ -199,7 +199,7 @@ function loadUsers() {
 
 // Tampilkan modal edit
 function editUser(id) {
-  fetch(`http://localhost:8000/api/users`)
+  fetch(`https://elamore-backend-production.up.railway.app/api/users`)
     .then(res => res.json())
     .then(users => {
       const user = users.find(u => u.id === id);
@@ -226,7 +226,7 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
     alamat: document.getElementById("editUserAlamat").value
   };
 
-  const res = await fetch(`http://localhost:8000/api/users/${id}`, {
+  const res = await fetch(`https://elamore-backend-production.up.railway.app/api/users/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify(data)
@@ -246,7 +246,7 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
 function hapusUser(id) {
   if (!confirm("Yakin ingin menghapus pengguna ini?")) return;
 
-  fetch(`http://localhost:8000/api/users/${id}`, {
+  fetch(`https://elamore-backend-production.up.railway.app/api/users/${id}`, {
     method: "DELETE"
   })
   .then(res => res.json())

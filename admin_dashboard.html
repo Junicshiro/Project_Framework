@@ -104,7 +104,7 @@
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://localhost:8000/api/admin/summary")
+    fetch("https://elamore-backend-production.up.railway.app/api/admin/summary")
         .then(res => res.json())
         .then(data => {
         document.getElementById("totalProduk").innerText = data.produk;

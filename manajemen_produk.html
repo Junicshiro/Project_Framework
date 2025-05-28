@@ -205,7 +205,7 @@
     const inputSearch = document.getElementById("searchProduk");
 
     // Ambil produk dari API
-    fetch("http://localhost:8000/api/products")
+    fetch("https://elamore-backend-production.up.railway.app/api/products")
       .then(res => res.json())
       .then(data => {
         semuaProduk = data;
@@ -279,7 +279,7 @@
     window.hapusProduk = function (id) {
       if (!confirm("Yakin ingin menghapus produk ini?")) return;
 
-      fetch(`http://localhost:8000/api/products/${id}`, {
+      fetch(`https://elamore-backend-production.up.railway.app/api/products/${id}`, {
         method: "DELETE"
       }).then(res => res.json())
         .then(() => {
@@ -319,7 +319,7 @@
         deskripsi: document.getElementById("editDeskripsi").value,
       };
 
-      const response = await fetch(`http://localhost:8000/api/products/${id}`, {
+      const response = await fetch(`https://elamore-backend-production.up.railway.app/api/products/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -355,7 +355,7 @@
       };
 
       try {
-        const response = await fetch("http://localhost:8000/api/products", {
+        const response = await fetch("https://elamore-backend-production.up.railway.app/api/products", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

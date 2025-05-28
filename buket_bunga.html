@@ -188,7 +188,7 @@
                 if (!userId) return alert("Silakan login terlebih dahulu.");
                 const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                fetch("http://localhost:8000/api/favorites", {
+                fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
                   method: "POST",
                   headers: { "Content-Type": "application/json", "Accept": "application/json" },
                   body: JSON.stringify({ user_id: userId, product_id: productId }),
@@ -205,7 +205,7 @@
                 if (!userId) return alert("Silakan login terlebih dahulu.");
                 const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                fetch("http://localhost:8000/api/cart", {
+                fetch("https://elamore-backend-production.up.railway.app/api/cart", {
                   method: "POST",
                   headers: { "Content-Type": "application/json", "Accept": "application/json" },
                   body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
@@ -236,7 +236,7 @@
         }
 
         // Ambil semua produk dari API dan filter hanya buket bunga
-        fetch("http://localhost:8000/api/products")
+        fetch("https://elamore-backend-production.up.railway.app/api/products")
           .then(res => res.json())
           .then(data => {
             produkBunga = data.filter(p => p.kategori.toLowerCase() === "buket bunga");
@@ -249,7 +249,7 @@
                   if (!userId) return alert("Silakan login terlebih dahulu.");
                   const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                  fetch("http://localhost:8000/api/favorites", {
+                  fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
                     method: "POST",
                     headers: { "Content-Type": "application/json", "Accept": "application/json" },
                     body: JSON.stringify({ user_id: userId, product_id: productId }),
@@ -268,7 +268,7 @@
                   if (!userId) return alert("Silakan login terlebih dahulu.");
                   const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                  fetch("http://localhost:8000/api/cart", {
+                  fetch("https://elamore-backend-production.up.railway.app/api/cart", {
                     method: "POST",
                     headers: { "Content-Type": "application/json", "Accept": "application/json" },
                     body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),

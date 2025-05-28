@@ -173,7 +173,7 @@
         return;
       }
 
-      fetch(`http://localhost:8000/api/cart/${userId}`)
+      fetch(`https://elamore-backend-production.up.railway.app/api/cart/${userId}`)
         .then(res => res.json())
         .then(data => {
           keranjang = data;
@@ -203,7 +203,7 @@
         const alamat = document.getElementById("alamat").value;
         const nomor = document.getElementById("nomor").value;
 
-        fetch("http://localhost:8000/api/checkout", {
+        fetch("https://elamore-backend-production.up.railway.app/api/checkout", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({

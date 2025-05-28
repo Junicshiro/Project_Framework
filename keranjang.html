@@ -255,7 +255,7 @@
         if (qty < 1) qty = 1;
         input.value = qty;
 
-        fetch(`http://localhost:8000/api/cart/${row.dataset.id}`, {
+        fetch(`https://elamore-backend-production.up.railway.app/api/cart/${row.dataset.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ quantity: qty })
@@ -268,7 +268,7 @@
         const row = document.querySelectorAll("tbody tr")[index];
         const cartId = row.dataset.id;
 
-        fetch(`http://localhost:8000/api/cart/${cartId}`, {
+        fetch(`https://elamore-backend-production.up.railway.app/api/cart/${cartId}`, {
         method: "DELETE"
         }).then(() => {
         ambilKeranjang();
@@ -276,7 +276,7 @@
     }
 
     function ambilKeranjang() {
-        fetch(`http://localhost:8000/api/cart/${userId}`)
+        fetch(`https://elamore-backend-production.up.railway.app/api/cart/${userId}`)
         .then(res => res.json())
         .then(data => tampilkanKeranjang(data));
     }
