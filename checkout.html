@@ -143,21 +143,26 @@
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const ikonUser = document.querySelector(".bi-person-circle");
-
-        if (ikonUser) {
-        ikonUser.addEventListener("click", function (e) {
+        document.querySelectorAll(".bi-person-circle").forEach(icon => {
+          icon.addEventListener("click", function (e) {
             e.preventDefault();
+            const userRaw = localStorage.getItem("elamoreUser");
+            let userId = null;
 
-            const user = localStorage.getItem("elamoreUser");
-
-            if (user) {
-            window.location.href = "akun_user.html"; // Sudah login
-            } else {
-            window.location.href = "login.html"; // Belum login
+            try {
+              const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
+              userId = elamoreUser?.id || null;
+            } catch (err) {
+              console.warn("Gagal membaca localStorage:", err);
             }
+
+            if (userId) {
+              window.location.href = "akun_user.html";
+            } else {
+              window.location.href = "login.html";
+            }
+          });
         });
-        }
     });
 
     const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));

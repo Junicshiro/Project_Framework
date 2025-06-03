@@ -325,21 +325,26 @@
   }
 
     document.addEventListener("DOMContentLoaded", function () {
-    const ikonUser = document.querySelector(".bi-person-circle");
-
-    if (ikonUser) {
-      ikonUser.addEventListener("click", function (e) {
+    document.querySelectorAll(".bi-person-circle").forEach(icon => {
+      icon.addEventListener("click", function (e) {
         e.preventDefault();
+        const userRaw = localStorage.getItem("elamoreUser");
+        let userId = null;
 
-        const user = localStorage.getItem("elamoreUser");
+        try {
+          const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
+          userId = elamoreUser?.id || null;
+        } catch (err) {
+          console.warn("Gagal membaca localStorage:", err);
+        }
 
-        if (user) {
-          window.location.href = "akun_user.html"; // Sudah login
+        if (userId) {
+          window.location.href = "akun_user.html";
         } else {
-          window.location.href = "login.html"; // Belum login
+          window.location.href = "login.html";
         }
       });
-    }
+    });
   });
 
 document.addEventListener("DOMContentLoaded", function () {
