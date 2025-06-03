@@ -173,27 +173,30 @@
     <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-        const ikonUser = document.querySelector(".bi-person-circle");
-        let userId = null;
-        try {
-          const elamoreUserRaw = localStorage.getItem("elamoreUser");
-          const elamoreUser = elamoreUserRaw ? JSON.parse(elamoreUserRaw) : null;
-          userId = elamoreUser?.id || null;
-        } catch (e) {
-          console.warn("Gagal membaca user dari localStorage:", e);
-          userId = null;
-        }
+        // const ikonUser = document.querySelector(".bi-person-circle");
+        const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
+        const userId = elamoreUser?.id || null;
 
-        if (ikonUser) {
-          ikonUser.addEventListener("click", function (e) {
+        document.querySelectorAll(".bi-person-circle").forEach(icon => {
+          icon.addEventListener("click", function (e) {
             e.preventDefault();
+            const userRaw = localStorage.getItem("elamoreUser");
+            let userId = null;
+
+            try {
+              const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
+              userId = elamoreUser?.id || null;
+            } catch (err) {
+              console.warn("Gagal membaca localStorage:", err);
+            }
+
             if (userId) {
               window.location.href = "akun_user.html";
             } else {
               window.location.href = "login.html";
             }
           });
-        }
+        });
 
         fetch("https://elamore-backend-production.up.railway.app/api/products")
           .then(res => res.json())
