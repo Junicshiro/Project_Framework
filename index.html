@@ -174,8 +174,15 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
         const ikonUser = document.querySelector(".bi-person-circle");
-        const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
-        const userId = elamoreUser?.id || null;
+        let userId = null;
+        try {
+          const elamoreUserRaw = localStorage.getItem("elamoreUser");
+          const elamoreUser = elamoreUserRaw ? JSON.parse(elamoreUserRaw) : null;
+          userId = elamoreUser?.id || null;
+        } catch (e) {
+          console.warn("Gagal membaca user dari localStorage:", e);
+          userId = null;
+        }
 
         if (ikonUser) {
           ikonUser.addEventListener("click", function (e) {
