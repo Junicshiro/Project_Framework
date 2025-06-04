@@ -164,7 +164,15 @@
           </div>
 
       </section>
-         
+    
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+      <div id="elamoreToast" class="toast align-items-center text-white bg-success border-0 d-none" role="alert">
+        <div class="d-flex">
+          <div class="toast-body" id="elamoreToastMsg">Berhasil!</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" onclick="hideToast()"></button>
+        </div>
+      </div>
+    </div>
 
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2025 Elamore. All rights reserved. <a href="admin_login.html" class="text-muted">Admin</a>
@@ -213,7 +221,7 @@
             setTimeout(() => {
               document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
                 btn.addEventListener("click", () => {
-                  if (!userId) return alert("Silakan login terlebih dahulu.");
+                  if (!userId) return showToast("Silakan login terlebih dahulu", true);
                   const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
                   fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
@@ -232,7 +240,7 @@
 
               document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
                 btn.addEventListener("click", () => {
-                  if (!userId) return alert("Silakan login terlebih dahulu.");
+                  if (!userId) return showToast("Silakan login terlebih dahulu", true);
                   const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
                   fetch("https://elamore-backend-production.up.railway.app/api/cart", {
@@ -241,7 +249,7 @@
                     body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
                   })
                     .then(res => res.json())
-                    .then(() => alert("Produk berhasil ditambahkan ke keranjang."));
+                    .then(() => showToast("Produk berhasil ditambahkan ke keranjang."));
                 });
               });
             }, 300);
@@ -300,6 +308,24 @@
           document.getElementById("btnSearchMobile").click();
         }
       });
+
+    function showToast(message, isError = false) {
+      const toast = document.getElementById("elamoreToast");
+      const toastMsg = document.getElementById("elamoreToastMsg");
+
+      toast.classList.remove("bg-success", "bg-danger", "d-none");
+      toast.classList.add(isError ? "bg-danger" : "bg-success");
+
+      toastMsg.textContent = message;
+
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+    }
+
+    function hideToast() {
+      const toast = document.getElementById("elamoreToast");
+      toast.classList.add("d-none");
+    }
     </script>
 </body>
 </html>
