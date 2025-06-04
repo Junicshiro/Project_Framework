@@ -165,10 +165,10 @@
     </footer>
 
     <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('produk').addEventListener('click', function(event) {
-            // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
-            window.location.href = 'produk.html';
+        window.location.href = 'produk.html';
         });
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -195,53 +195,71 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    localStorage.setItem("elamoreUser", JSON.stringify(result.user));
-                    Swal.fire("Login Berhasil!", "", "success");
+                localStorage.setItem("elamoreUser", JSON.stringify(result.user));
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login berhasil!',
+                    text: 'Selamat datang kembali di Elamore',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+                setTimeout(() => {
                     window.location.href = "index.html";
+                }, 2000);
+                
                 } else {
-                alert("Login gagal: " + result.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login gagal',
+                    text: result.message || 'Silakan coba lagi'
+                });
                 }
             } catch (error) {
-                alert("Error: " + error.message);
+                Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan',
+                text: error.message
+                });
             }
             });
         }
         });
 
-        // Desktop
-  document.getElementById("btnSearchDesktop").addEventListener("click", function () {
-    const keyword = document.getElementById("searchDesktop").value.trim();
-    if (keyword) {
-      window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
-    }
-  });
+        // Fitur Pencarian - Desktop
+        document.getElementById("btnSearchDesktop").addEventListener("click", function () {
+        const keyword = document.getElementById("searchDesktop").value.trim();
+        if (keyword) {
+            window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+        }
+        });
 
-  document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      document.getElementById("btnSearchDesktop").click();
-    }
-  });
+        document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            document.getElementById("btnSearchDesktop").click();
+        }
+        });
 
-  // Mobile
-  document.getElementById("btnSearchMobile").addEventListener("click", function () {
-    const keyword = document.getElementById("searchMobile").value.trim();
-    if (keyword) {
-      // Tutup modal dulu
-      const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
-      modal.hide();
-      setTimeout(() => {
-        window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
-      }, 300);
-    }
-  });
+        // Fitur Pencarian - Mobile
+        document.getElementById("btnSearchMobile").addEventListener("click", function () {
+        const keyword = document.getElementById("searchMobile").value.trim();
+        if (keyword) {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+            modal.hide();
+            setTimeout(() => {
+            window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+            }, 300);
+        }
+        });
 
-  document.getElementById("searchMobile").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      document.getElementById("btnSearchMobile").click();
-    }
-  });
+        document.getElementById("searchMobile").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            document.getElementById("btnSearchMobile").click();
+        }
+        });
     </script>
 </body>
 </html>
