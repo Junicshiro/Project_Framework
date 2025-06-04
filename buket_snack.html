@@ -333,39 +333,58 @@
       }
 
       // Desktop
-  document.getElementById("btnSearchDesktop").addEventListener("click", function () {
-    const keyword = document.getElementById("searchDesktop").value.trim();
-    if (keyword) {
-      window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
-    }
-  });
+      document.getElementById("btnSearchDesktop").addEventListener("click", function () {
+        const keyword = document.getElementById("searchDesktop").value.trim();
+        if (keyword) {
+          window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+        }
+      });
 
-  document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      document.getElementById("btnSearchDesktop").click();
-    }
-  });
+      document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          document.getElementById("btnSearchDesktop").click();
+        }
+      });
 
-  // Mobile
-  document.getElementById("btnSearchMobile").addEventListener("click", function () {
-    const keyword = document.getElementById("searchMobile").value.trim();
-    if (keyword) {
-      // Tutup modal dulu
-      const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
-      modal.hide();
-      setTimeout(() => {
-        window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
-      }, 300);
-    }
-  });
+      // Mobile
+      document.getElementById("btnSearchMobile").addEventListener("click", function () {
+        const keyword = document.getElementById("searchMobile").value.trim();
+        if (keyword) {
+          // Tutup modal dulu
+          const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+          modal.hide();
+          setTimeout(() => {
+            window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+          }, 300);
+        }
+      });
 
-  document.getElementById("searchMobile").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      document.getElementById("btnSearchMobile").click();
-    }
-  });
+      document.getElementById("searchMobile").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          document.getElementById("btnSearchMobile").click();
+        }
+      });
+
+    function showToast(message, isError = false) {
+    const toast = document.getElementById("elamoreToast");
+    const toastMsg = document.getElementById("elamoreToastMsg");
+
+    toast.classList.remove("bg-success", "bg-danger", "d-none");
+    toast.classList.add(isError ? "bg-danger" : "bg-success");
+
+    toastMsg.textContent = message;
+
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+  }
+
+  function hideToast() {
+    const toast = document.getElementById("elamoreToast");
+    toast.classList.add("d-none");
+  }
+
     </script>
 </body>
 </html>
