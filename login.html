@@ -114,6 +114,7 @@
     </nav>        
 
     <!-- Form Login -->
+    <div id="errorMsg" class="alert alert-danger d-none small text-center"></div>
     <div class="container py-5 align-items-center min-vh-100">
         <div class="row justify-content-center">
           <div class="col-md-6">
@@ -165,10 +166,9 @@
     </footer>
 
     <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('produk').addEventListener('click', function(event) {
-        window.location.href = 'produk.html';
+            window.location.href = 'produk.html';
         });
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -183,6 +183,10 @@
                 password: document.getElementById("password").value
             };
 
+            const errorBox = document.getElementById("errorMsg");
+            errorBox.classList.add("d-none");
+            errorBox.innerText = "";
+
             try {
                 const response = await fetch("https://elamore-backend-production.up.railway.app/api/login", {
                 method: "POST",
@@ -196,38 +200,20 @@
                 const result = await response.json();
                 if (response.ok) {
                 localStorage.setItem("elamoreUser", JSON.stringify(result.user));
-                
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login berhasil!',
-                    text: 'Selamat datang kembali di Elamore',
-                    timer: 2000,
-                    showConfirmButton: false
-                });
-
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 2000);
-                
+                window.location.href = "index.html";
                 } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Login gagal',
-                    text: result.message || 'Silakan coba lagi'
-                });
+                errorBox.innerText = result.message || "Email atau password salah.";
+                errorBox.classList.remove("d-none");
                 }
             } catch (error) {
-                Swal.fire({
-                icon: 'error',
-                title: 'Terjadi Kesalahan',
-                text: error.message
-                });
+                errorBox.innerText = "Terjadi kesalahan koneksi. Coba lagi nanti.";
+                errorBox.classList.remove("d-none");
             }
             });
         }
         });
 
-        // Fitur Pencarian - Desktop
+        // Pencarian - Desktop
         document.getElementById("btnSearchDesktop").addEventListener("click", function () {
         const keyword = document.getElementById("searchDesktop").value.trim();
         if (keyword) {
@@ -242,7 +228,7 @@
         }
         });
 
-        // Fitur Pencarian - Mobile
+        // Pencarian - Mobile
         document.getElementById("btnSearchMobile").addEventListener("click", function () {
         const keyword = document.getElementById("searchMobile").value.trim();
         if (keyword) {
