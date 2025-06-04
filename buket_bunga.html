@@ -170,39 +170,39 @@
           const list = document.getElementById("buket-bunga-list");
           list.innerHTML = data.map(buatCardProduk).join("");
 
-          setTimeout(() => {
-            document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
-              btn.addEventListener("click", () => {
-                if (!userId) return showToast("Silakan login terlebih dahulu", true);
-                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+          // setTimeout(() => {
+          //   document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
+          //     btn.addEventListener("click", () => {
+          //       if (!userId) return showToast("Silakan login terlebih dahulu", true);
+          //       const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                  body: JSON.stringify({ user_id: userId, product_id: productId }),
-                }).then(res => res.json()).then(() => {
-                  const icon = btn.querySelector("i");
-                  icon.classList.remove("bi-heart");
-                  icon.classList.add("bi-heart-fill", "text-danger");
-                });
-              });
-            });
+          //       fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
+          //         method: "POST",
+          //         headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          //         body: JSON.stringify({ user_id: userId, product_id: productId }),
+          //       }).then(res => res.json()).then(() => {
+          //         const icon = btn.querySelector("i");
+          //         icon.classList.remove("bi-heart");
+          //         icon.classList.add("bi-heart-fill", "text-danger");
+          //       });
+          //     });
+          //   });
 
-            document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
-              btn.addEventListener("click", () => {
-                if (!userId) return showToast("Silakan login terlebih dahulu", true);
-                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+          //   document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
+          //     btn.addEventListener("click", () => {
+          //       if (!userId) return showToast("Silakan login terlebih dahulu", true);
+          //       const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                fetch("https://elamore-backend-production.up.railway.app/api/cart", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                  body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
-                }).then(res => res.json()).then(() => {
-                  showToast("Produk berhasil ditambahkan ke keranjang.");
-                });
-              });
-            });
-          }, 300);
+          //       fetch("https://elamore-backend-production.up.railway.app/api/cart", {
+          //         method: "POST",
+          //         headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          //         body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
+          //       }).then(res => res.json()).then(() => {
+          //         showToast("Produk berhasil ditambahkan ke keranjang.");
+          //       });
+          //     });
+          //   });
+          // }, 300);
         }
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -238,41 +238,41 @@
             tampilkanProduk(produkBunga);
 
             // Tambah event listener favorit dan keranjang
-            // setTimeout(() => {
-            //   document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
-            //     btn.addEventListener("click", () => {
-            //       if (!userId) return showToast("Silakan login terlebih dahulu", true);
-            //       const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+            setTimeout(() => {
+              document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
+                btn.addEventListener("click", () => {
+                  if (!userId) return showToast("Silakan login terlebih dahulu", true);
+                  const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-            //       fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
-            //         method: "POST",
-            //         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            //         body: JSON.stringify({ user_id: userId, product_id: productId }),
-            //       })
-            //         .then(res => res.json())
-            //         .then(() => {
-            //           const icon = btn.querySelector("i");
-            //           icon.classList.remove("bi-heart");
-            //           icon.classList.add("bi-heart-fill", "text-danger");
-            //         });
-            //     });
-            //   });
+                  fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify({ user_id: userId, product_id: productId }),
+                  })
+                    .then(res => res.json())
+                    .then(() => {
+                      const icon = btn.querySelector("i");
+                      icon.classList.remove("bi-heart");
+                      icon.classList.add("bi-heart-fill", "text-danger");
+                    });
+                });
+              });
 
-            //   document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
-            //     btn.addEventListener("click", () => {
-            //       if (!userId) return showToast("Silakan login terlebih dahulu", true);
-            //       const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+              document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
+                btn.addEventListener("click", () => {
+                  if (!userId) return showToast("Silakan login terlebih dahulu", true);
+                  const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-            //       fetch("https://elamore-backend-production.up.railway.app/api/cart", {
-            //         method: "POST",
-            //         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            //         body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
-            //       })
-            //         .then(res => res.json())
-            //         .then(() => showToast("Produk berhasil ditambahkan ke keranjang."));
-            //     });
-            //   });
-            // }, 300);
+                  fetch("https://elamore-backend-production.up.railway.app/api/cart", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
+                  })
+                    .then(res => res.json())
+                    .then(() => showToast("Produk berhasil ditambahkan ke keranjang."));
+                });
+              });
+            }, 300);
 
             document.getElementById("sortHarga").addEventListener("change", function () {
               const value = this.value;
