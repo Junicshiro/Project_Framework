@@ -102,8 +102,11 @@
                     <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="promo.html">Promo</a></li>
                     <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="tentang_kami.html">Tentang Kami</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white link-danger opacity-75" href="produk.html" id="produk" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
-                        <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produk">
+                        <a class="nav-link dropdown-toggle" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Produk
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="produkDropdown">
+                            <li><a class="dropdown-item" href="produk.html">Semua Produk</a></li>
                             <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
                             <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
                             <li><a class="dropdown-item" href="buket_snack.html">Buket Snack</a></li>
@@ -164,10 +167,10 @@
 
     <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('produk').addEventListener('click', function(event) {
-            // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
-            window.location.href = 'produk.html';
-        });
+        // document.getElementById('produk').addEventListener('click', function(event) {
+        //     // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
+        //     window.location.href = 'produk.html';
+        // });
 
         document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".bi-person-circle").forEach(icon => {
