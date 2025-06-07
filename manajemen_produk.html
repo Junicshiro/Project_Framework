@@ -189,6 +189,17 @@
     </div>
   </div>
 
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMessage">
+        Berhasil!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
   
   <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Elamore. All rights reserved.</p>
@@ -283,7 +294,7 @@
         method: "DELETE"
       }).then(res => res.json())
         .then(() => {
-          alert("Produk dihapus.");
+          showToast("Produk dihapus!", "success");
           semuaProduk = semuaProduk.filter(p => p.id !== id);
           tampilkanProduk(semuaProduk);
         });
@@ -331,13 +342,13 @@
       const result = await response.json();
 
       if (response.ok) {
-        alert("Produk berhasil diperbarui!");
+        showToast("Produk berhasil diperbarui!", "success");
         const modal = bootstrap.Modal.getInstance(document.getElementById("modalEditProduk"));
         modal.hide();
         semuaProduk = semuaProduk.map(p => p.id == id ? result.produk : p);
         tampilkanProduk(semuaProduk);
       } else {
-        alert("Gagal memperbarui produk");
+        showToast("Gagal memperbaharui produk", "danger");
       }
     });
 
@@ -367,7 +378,7 @@
         const result = await response.json();
 
         if (response.ok) {
-          alert("Produk berhasil ditambahkan!");
+          showToast("Produk berhasil ditambahkan!", "success");
           const modal = bootstrap.Modal.getInstance(document.getElementById("modalTambahProduk"));
           modal.hide();
           document.getElementById("formTambahProduk").reset();
@@ -376,10 +387,10 @@
           semuaProduk.push(result.produk || result); // antisipasi respons beragam
           tampilkanProduk(semuaProduk);
         } else {
-          alert("Gagal menambahkan produk: " + JSON.stringify(result));
+          showToast("Gagal menambahkan produk: " + (result?.message || "Terjadi kesalahan"), "danger");
         }
       } catch (error) {
-        alert("Terjadi kesalahan saat menambah produk: " + error.message);
+        showToast("Terjadi kesalahan: " + error.message, "danger");
       }
     });
   });
@@ -396,6 +407,18 @@
   if (!admin) {
     window.location.href = "admin_login.html"; // Redirect jika belum login
   }
+
+  function showToast(pesan, warna = "success") {
+  const toastElement = document.getElementById("toastNotifikasi");
+  const toastBody = document.getElementById("toastMessage");
+
+  toastBody.textContent = pesan;
+  toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
+
+  const toast = new bootstrap.Toast(toastElement);
+  toast.show();
+}
+
   </script>
 
     

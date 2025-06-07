@@ -143,6 +143,18 @@
     </form>
   </div>
 
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMessage">
+        Berhasil!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -225,7 +237,7 @@
         })
         .then(res => res.json())
         .then(data => {
-          alert("Pesanan berhasil dibuat!");
+          showToast("Pesanan berhasil dibuat!", "success");
           window.location.href = "akun_user.html";
         });
       });
@@ -293,6 +305,18 @@
 
   // Cek apakah waktunya logout setiap menit
   setInterval(cekAutoLogout, 60000);
+
+  function showToast(pesan, warna = "success") {
+  const toastElement = document.getElementById("toastNotifikasi");
+  const toastBody = document.getElementById("toastMessage");
+
+  toastBody.textContent = pesan;
+  toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
+
+  const toast = new bootstrap.Toast(toastElement);
+  toast.show();
+}
+
   </script>
 </body>
 </html>

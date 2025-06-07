@@ -256,6 +256,16 @@
   </div>
 </div>
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMessage">
+        Berhasil!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
 
 <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Elamore. All rights reserved.</p>
@@ -300,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(localStorage.getItem("elamoreUser"));
 
   if (!user) {
-    alert("Silakan login terlebih dahulu.");
+    showToast("Silahkan login terlebih dahulu!", "danger");
     window.location.href = "login.html";
     return;
   }
@@ -407,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then(res => res.json())
       .then(result => {
-        alert("Produk dihapus dari favorit");
+        showToast("Produk dihapus dari favorit", "success");
         location.reload();
       });
   }
@@ -456,7 +466,7 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
     const result = await response.json();
 
     if (response.ok) {
-      alert("Informasi berhasil diperbarui!");
+      showToast("Informasi berhasil diperbarui!", "success");
 
       // Simpan user terbaru ke localStorage
       localStorage.setItem("elamoreUser", JSON.stringify(result.user));
@@ -465,11 +475,12 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
       bootstrap.Modal.getInstance(document.getElementById("modalEditUser")).hide();
       location.reload();
     } else {
-      alert("Gagal memperbarui: " + JSON.stringify(result));
+      showToast("Gagal memperbarui: " + (result?.message || "Terjadi kesalahan"), "danger");
     }
   } catch (error) {
-    alert("Terjadi kesalahan: " + error.message);
+    showToast("Terjadi kesalahan: " + error.message, "danger");
   }
+
 });
 
 // Desktop
@@ -534,6 +545,18 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
 
   // Cek apakah waktunya logout setiap menit
   setInterval(cekAutoLogout, 60000);
+
+  function showToast(pesan, warna = "success") {
+  const toastElement = document.getElementById("toastNotifikasi");
+  const toastBody = document.getElementById("toastMessage");
+
+  toastBody.textContent = pesan;
+  toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
+
+  const toast = new bootstrap.Toast(toastElement);
+  toast.show();
+}
+
 </script>
 
 </body>
