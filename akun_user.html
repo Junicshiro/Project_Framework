@@ -507,7 +507,7 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
     }
   });
 
-  const TIMEOUT = 30 * 1000; // 30 menit dalam milidetik
+  const TIMEOUT = 30 * 60 * 1000; // 30 menit dalam milidetik
 
   function perbaruiAktivitas() {
     localStorage.setItem("elamoreLastActive", Date.now());

@@ -268,33 +268,6 @@
     }
   });
 
-  const TIMEOUT = 30 * 60 * 1000; // 30 menit dalam milidetik
-
-  function perbaruiAktivitas() {
-    localStorage.setItem("elamoreLastActive", Date.now());
-  }
-
-  function cekAutoLogout() {
-    const user = localStorage.getItem("elamoreUser");
-    const last = localStorage.getItem("elamoreLastActive");
-
-    if (user && last && Date.now() - last > TIMEOUT) {
-      localStorage.removeItem("elamoreUser");
-      localStorage.removeItem("elamoreLastActive");
-      window.location.href = "login.html";
-    }
-  }
-
-  // Simpan waktu aktif saat halaman dimuat pertama kali
-  perbaruiAktivitas();
-
-  // Setiap aktivitas akan memperbarui waktu
-  ["click", "mousemove", "keypress", "scroll", "touchstart"].forEach(event =>
-    window.addEventListener(event, perbaruiAktivitas)
-  );
-
-  // Cek apakah waktunya logout setiap menit
-  setInterval(cekAutoLogout, 60000);
     </script>
 </body>
 </html>
