@@ -133,7 +133,7 @@
             <!-- Formulir Kontak -->
             <div class="col-md-6">
                 <h2 class="text-danger">Kirim Pesan</h2>
-                <form>
+                <form id="formKontak">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="name" placeholder="Nama Anda">
@@ -159,6 +159,18 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0299290326384!2d128.00044417472543!3d1.7155704982685687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329a61cadd5962cb%3A0xdeb2ab4b98920310!2sElamore%20Flowers%20%26%20Gifts!5e0!3m2!1sid!2sid!4v1742020281834!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
+
+    <!-- Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div id="toastKontak" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+        <div class="toast-body" id="toastKontakMsg">
+            Pesan berhasil dikirim!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    </div>
 
     <!-- Footer -->
     <footer style="background-color: #E91E63;" class="text-white pt-5">
@@ -289,6 +301,57 @@
     }
   });
 
+  const formKontak = document.getElementById("formKontak");
+
+  if (formKontak) {
+    formKontak.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      try {
+        const response = await fetch("https://elamore-backend-production.up.railway.app/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ name, email, message }),
+        });
+
+        const result = await response.json();
+        const toastEl = document.getElementById("toastKontak");
+        const toastMsg = document.getElementById("toastKontakMsg");
+
+        if (response.ok) {
+          toastEl.classList.remove("bg-danger");
+          toastEl.classList.add("bg-success");
+          toastMsg.textContent = result.message || "Pesan berhasil dikirim!";
+          formKontak.reset(); // kosongkan form
+        } else {
+          toastEl.classList.remove("bg-success");
+          toastEl.classList.add("bg-danger");
+          toastMsg.textContent = result.message || "Gagal mengirim pesan.";
+        }
+
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+
+      } catch (error) {
+        const toastEl = document.getElementById("toastKontak");
+        const toastMsg = document.getElementById("toastKontakMsg");
+
+        toastEl.classList.remove("bg-success");
+        toastEl.classList.add("bg-danger");
+        toastMsg.textContent = "Terjadi kesalahan koneksi.";
+
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+      }
+    });
+  }
     </script>
 </body>
 </html>
