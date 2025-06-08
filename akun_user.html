@@ -440,9 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-});
-
-// AMBIL FAVORIT
+  // AMBIL FAVORIT
   fetch(`https://elamore-backend-production.up.railway.app/api/favorites/${userId}`)
     .then(res => res.json())
     .then(data => {
@@ -482,6 +480,8 @@ document.addEventListener("DOMContentLoaded", function () {
         location.reload();
       });
   }
+
+});
 
 // Tombol ubah info
 document.getElementById("btnUbahInfo").addEventListener("click", function (e) {
