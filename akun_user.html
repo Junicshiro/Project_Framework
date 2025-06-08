@@ -468,11 +468,8 @@ document.addEventListener("DOMContentLoaded", function () {
           favContainer.appendChild(card);
         });
       }
-    });
 
-});
-
-function hapusFavorit(favId) {
+      function hapusFavorit(favId) {
     fetch(`https://elamore-backend-production.up.railway.app/api/favorites/${favId}`, {
       method: "DELETE"
     })
@@ -482,6 +479,11 @@ function hapusFavorit(favId) {
         location.reload();
       });
   }
+    });
+
+  
+
+});
 
 // Tombol ubah info
 document.getElementById("btnUbahInfo").addEventListener("click", function (e) {
