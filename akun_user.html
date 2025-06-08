@@ -440,7 +440,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-  // AMBIL FAVORIT
+});
+
+// AMBIL FAVORIT
   fetch(`https://elamore-backend-production.up.railway.app/api/favorites/${userId}`)
     .then(res => res.json())
     .then(data => {
@@ -468,8 +470,9 @@ document.addEventListener("DOMContentLoaded", function () {
           favContainer.appendChild(card);
         });
       }
+    });
 
-      function hapusFavorit(favId) {
+  function hapusFavorit(favId) {
     fetch(`https://elamore-backend-production.up.railway.app/api/favorites/${favId}`, {
       method: "DELETE"
     })
@@ -479,11 +482,6 @@ document.addEventListener("DOMContentLoaded", function () {
         location.reload();
       });
   }
-    });
-
-  
-
-});
 
 // Tombol ubah info
 document.getElementById("btnUbahInfo").addEventListener("click", function (e) {
