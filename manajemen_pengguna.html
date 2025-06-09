@@ -141,6 +141,24 @@
   </div>
 </div>
 
+  <!-- Modal Konfirmasi Hapus Pengguna -->
+  <div class="modal fade" id="modalKonfirmasiHapusUser" tabindex="-1" aria-labelledby="modalHapusUserLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="modalHapusUserLabel">Konfirmasi Hapus</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          Apakah Anda yakin ingin menghapus pengguna ini?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-danger" id="btnKonfirmasiHapusUser">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Elamore. All rights reserved.</p>
@@ -254,10 +272,20 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
 });
 
 // Hapus user
+let userUntukDihapus = null;
+
 function hapusUser(id) {
+  userUntukDihapus = id;
+  const modal = new bootstrap.Modal(document.getElementById("modalKonfirmasiHapusUser"));
+  modal.show();
+}
+
+document.getElementById("btnKonfirmasiHapusUser").addEventListener("click", function () {
+  if (!userUntukDihapus) return;
+
   showToast("Menghapus pengguna...", "warning");
 
-  fetch(`https://elamore-backend-production.up.railway.app/api/users/${id}`, {
+  fetch(`https://elamore-backend-production.up.railway.app/api/users/${userUntukDihapus}`, {
     method: "DELETE"
   })
   .then(res => {
@@ -270,8 +298,13 @@ function hapusUser(id) {
   })
   .catch(() => {
     showToast("Terjadi kesalahan saat menghapus pengguna.", "danger");
+  })
+  .finally(() => {
+    const modal = bootstrap.Modal.getInstance(document.getElementById("modalKonfirmasiHapusUser"));
+    modal.hide();
+    userUntukDihapus = null;
   });
-}
+});
 
 
 // Panggil saat halaman dimuat

@@ -200,6 +200,26 @@
   </div>
 </div>
 
+<!-- Modal Konfirmasi Hapus Produk -->
+<div class="modal fade" id="modalKonfirmasiHapus" tabindex="-1" aria-labelledby="modalKonfirmasiLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalKonfirmasiLabel">Konfirmasi Hapus</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menghapus produk ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" id="btnKonfirmasiHapus">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   
   <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2025 Elamore. All rights reserved.</p>
@@ -287,26 +307,40 @@
     };
 
     // Fungsi hapus produk
+    let produkUntukDihapus = null; // Simpan ID produk yang akan dihapus
+
     window.hapusProduk = function (id) {
-  showToast("Menghapus produk...", "warning");
+      produkUntukDihapus = id;
+      const modal = new bootstrap.Modal(document.getElementById("modalKonfirmasiHapus"));
+      modal.show();
+    };
 
-  fetch(`https://elamore-backend-production.up.railway.app/api/products/${id}`, {
-    method: "DELETE"
-  })
-  .then(res => {
-    if (!res.ok) throw new Error("Gagal menghapus produk.");
-    return res.json();
-  })
-  .then(() => {
-    showToast("Produk berhasil dihapus!", "success");
-    semuaProduk = semuaProduk.filter(p => p.id !== id);
-    tampilkanProduk(semuaProduk);
-  })
-  .catch(() => {
-    showToast("Terjadi kesalahan saat menghapus produk.", "danger");
-  });
-};
+    document.getElementById("btnKonfirmasiHapus").addEventListener("click", function () {
+      if (!produkUntukDihapus) return;
 
+      showToast("Menghapus produk...", "warning");
+
+      fetch(`https://elamore-backend-production.up.railway.app/api/products/${produkUntukDihapus}`, {
+        method: "DELETE"
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Gagal menghapus produk.");
+        return res.json();
+      })
+      .then(() => {
+        showToast("Produk berhasil dihapus!", "success");
+        semuaProduk = semuaProduk.filter(p => p.id !== produkUntukDihapus);
+        tampilkanProduk(semuaProduk);
+      })
+      .catch(() => {
+        showToast("Terjadi kesalahan saat menghapus produk.", "danger");
+      })
+      .finally(() => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById("modalKonfirmasiHapus"));
+        modal.hide();
+        produkUntukDihapus = null;
+      });
+    });
 
     // Fungsi edit produk (isi modal)
     window.editProduk = function (id) {
