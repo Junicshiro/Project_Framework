@@ -288,17 +288,25 @@
 
     // Fungsi hapus produk
     window.hapusProduk = function (id) {
-      if (!confirm("Yakin ingin menghapus produk ini?")) return;
+  showToast("Menghapus produk...", "warning");
 
-      fetch(`https://elamore-backend-production.up.railway.app/api/products/${id}`, {
-        method: "DELETE"
-      }).then(res => res.json())
-        .then(() => {
-          showToast("Produk dihapus!", "success");
-          semuaProduk = semuaProduk.filter(p => p.id !== id);
-          tampilkanProduk(semuaProduk);
-        });
-    };
+  fetch(`https://elamore-backend-production.up.railway.app/api/products/${id}`, {
+    method: "DELETE"
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Gagal menghapus produk.");
+    return res.json();
+  })
+  .then(() => {
+    showToast("Produk berhasil dihapus!", "success");
+    semuaProduk = semuaProduk.filter(p => p.id !== id);
+    tampilkanProduk(semuaProduk);
+  })
+  .catch(() => {
+    showToast("Terjadi kesalahan saat menghapus produk.", "danger");
+  });
+};
+
 
     // Fungsi edit produk (isi modal)
     window.editProduk = function (id) {

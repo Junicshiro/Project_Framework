@@ -255,17 +255,24 @@ document.getElementById("formEditUser").addEventListener("submit", async functio
 
 // Hapus user
 function hapusUser(id) {
-  if (!confirm("Yakin ingin menghapus pengguna ini?")) return;
+  showToast("Menghapus pengguna...", "warning");
 
   fetch(`https://elamore-backend-production.up.railway.app/api/users/${id}`, {
     method: "DELETE"
   })
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Gagal menghapus pengguna.");
+    return res.json();
+  })
   .then(() => {
-    showToast("Pengguna dihapus!", "success");
+    showToast("Pengguna berhasil dihapus!", "success");
     loadUsers();
+  })
+  .catch(() => {
+    showToast("Terjadi kesalahan saat menghapus pengguna.", "danger");
   });
 }
+
 
 // Panggil saat halaman dimuat
 document.addEventListener("DOMContentLoaded", loadUsers);
