@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Admin - Elamore</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 </head>
+
 <body style="background-color: #feedf3;" class="d-flex align-items-center justify-content-center min-vh-100">
 
   <div class="card shadow-sm p-4" style="max-width: 420px; width: 100%;">
@@ -48,18 +50,19 @@
         },
         body: JSON.stringify({ email, password }),
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          localStorage.setItem("elamoreAdmin", JSON.stringify(data.admin));
-          window.location.href = "admin_dashboard.html";
-        } else {
-          const errBox = document.getElementById("errorMsg");
-          errBox.innerText = data.message;
-          errBox.classList.remove("d-none");
-        }
-      });
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem("elamoreAdmin", JSON.stringify(data.admin));
+            window.location.href = "admin_dashboard.html";
+          } else {
+            const errBox = document.getElementById("errorMsg");
+            errBox.innerText = data.message;
+            errBox.classList.remove("d-none");
+          }
+        });
     }
   </script>
 </body>
+
 </html>

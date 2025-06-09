@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +14,7 @@
         }
     </style>
 </head>
+
 <body style="background-color: #feedf3;">
 
     <nav class="navbar navbar-dark" style="background-color: #E91E63;">
@@ -52,7 +54,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <button id="btnLogoutAdmin" class="nav-link text-white link-danger opacity-75 border-0 bg-transparent">
+                    <button id="btnLogoutAdmin"
+                        class="nav-link text-white link-danger opacity-75 border-0 bg-transparent">
                         <i class="bi bi-box-arrow-right me-2"></i> Logout
                     </button>
                 </li>
@@ -99,35 +102,36 @@
             </div>
         </div>
 
-        
 
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://elamore-backend-production.up.railway.app/api/admin/summary")
-        .then(res => res.json())
-        .then(data => {
-        document.getElementById("totalProduk").innerText = data.produk;
-        document.getElementById("totalPesanan").innerText = data.pesanan;
-        document.getElementById("totalPengguna").innerText = data.pengguna;
-        document.getElementById("totalPendapatan").innerText = 
-            "Rp " + Number(data.pendapatan).toLocaleString("id-ID");
-        });
-    });
 
-    document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
-        e.preventDefault();
-        // Hapus data admin dari localStorage
-        localStorage.removeItem("elamoreAdmin");
-        // Redirect ke halaman login admin
-        window.location.href = "admin_login.html";
-    });
+        <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                fetch("https://elamore-backend-production.up.railway.app/api/admin/summary")
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById("totalProduk").innerText = data.produk;
+                        document.getElementById("totalPesanan").innerText = data.pesanan;
+                        document.getElementById("totalPengguna").innerText = data.pengguna;
+                        document.getElementById("totalPendapatan").innerText =
+                            "Rp " + Number(data.pendapatan).toLocaleString("id-ID");
+                    });
+            });
 
-    const admin = localStorage.getItem("elamoreAdmin");
-    if (!admin) {
-        window.location.href = "admin_login.html"; // Redirect jika belum login
-    }
-    </script>
+            document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
+                e.preventDefault();
+                // Hapus data admin dari localStorage
+                localStorage.removeItem("elamoreAdmin");
+                // Redirect ke halaman login admin
+                window.location.href = "admin_login.html";
+            });
+
+            const admin = localStorage.getItem("elamoreAdmin");
+            if (!admin) {
+                window.location.href = "admin_login.html"; // Redirect jika belum login
+            }
+        </script>
 
 </body>
+
 </html>

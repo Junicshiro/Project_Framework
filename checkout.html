@@ -1,120 +1,128 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Checkout - Elamore</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout - Elamore</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
 
-    <style>
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-    </style>
+  <style>
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
 </head>
+
 <body style="background-color: #feedf3;">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E91E63;">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="images/logo_elamore.jpg" alt="Logo" width="40" height="40" class="rounded-circle me-2">
-                <span>Elamore</span>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E91E63;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logo_elamore.jpg" alt="Logo" width="40" height="40" class="rounded-circle me-2">
+        <span>Elamore</span>
+      </a>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="d-flex" style="width: 40%;">
+          <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search"
+            id="searchDesktop">
+          <button class="btn btn-light" type="button" id="btnSearchDesktop">Cari</button>
+        </div>
+      </div>
+
+      <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
+      <ul class="navbar-nav ms-auto d-none d-lg-flex flex-row gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.facebook.com/share/1HBDb4Zytb/"><i
+              class="bi bi-facebook fs-5 text-white link-danger"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com/elamore.official?igsh=ZDI2Ym1lb21lZGQx"><i
+              class="bi bi-instagram fs-5 text-white link-danger"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="wa.me/message/KLMMIHHJQBHTE1"><i
+              class="bi bi-whatsapp fs-5 text-white link-danger"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link position-relative" href="keranjang.html">
+            <i class="bi bi-cart fs-5 text-white link-danger"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="bi bi-person-circle fs-5 text-white link-danger"></i></a>
+        </li>
+      </ul>
+
+      <!-- Ikon Pencarian, Keranjang, dan Login untuk Mobile -->
+      <div class="d-flex d-lg-none align-items-center gap-3">
+        <!-- Ikon Pencarian -->
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <i class="bi bi-search fs-5 text-white link-danger"></i>
+        </a>
+
+        <!-- Ikon Keranjang -->
+        <a class="nav-link position-relative" href="keranjang.html">
+          <i class="bi bi-cart fs-5 text-white link-danger"></i>
+        </a>
+
+        <!-- Ikon Login -->
+        <a class="nav-link" href="login.html">
+          <i class="bi bi-person-circle fs-5 text-white link-danger"></i>
+        </a>
+      </div>
+
+      <!-- Modal Pencarian -->
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="searchModalLabel">Cari Produk</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
+                <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg" style="background-color: #ff71a3;">
+    <div class="container justify-content-center">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenu"
+        aria-controls="submenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="submenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="index.html">Beranda</a></li>
+          <!-- <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="promo.html">Promo</a></li> -->
+          <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="tentang_kami.html">Tentang
+              Kami</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white link-danger opacity-75" href="#" id="produkDropdown"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Produk
             </a>
-
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <div class="d-flex" style="width: 40%;">
-                  <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchDesktop">
-                  <button class="btn btn-light" type="button" id="btnSearchDesktop">Cari</button>
-                </div>
-            </div>
-
-            <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
-            <ul class="navbar-nav ms-auto d-none d-lg-flex flex-row gap-2">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.facebook.com/share/1HBDb4Zytb/"><i class="bi bi-facebook fs-5 text-white link-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.instagram.com/elamore.official?igsh=ZDI2Ym1lb21lZGQx"><i class="bi bi-instagram fs-5 text-white link-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="wa.me/message/KLMMIHHJQBHTE1"><i class="bi bi-whatsapp fs-5 text-white link-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link position-relative" href="keranjang.html">
-                        <i class="bi bi-cart fs-5 text-white link-danger"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html"><i class="bi bi-person-circle fs-5 text-white link-danger"></i></a>
-                </li>
+            <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produkDropdown">
+              <li><a class="dropdown-item" href="produk.html">Semua Produk</a></li>
+              <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
+              <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
+              <li><a class="dropdown-item" href="buket_snack.html">Buket Snack</a></li>
             </ul>
-
-            <!-- Ikon Pencarian, Keranjang, dan Login untuk Mobile -->
-            <div class="d-flex d-lg-none align-items-center gap-3">
-                <!-- Ikon Pencarian -->
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
-                    <i class="bi bi-search fs-5 text-white link-danger"></i>
-                </a>
-
-                <!-- Ikon Keranjang -->
-                <a class="nav-link position-relative" href="keranjang.html">
-                    <i class="bi bi-cart fs-5 text-white link-danger"></i>
-                </a>
-
-                <!-- Ikon Login -->
-                <a class="nav-link" href="login.html">
-                    <i class="bi bi-person-circle fs-5 text-white link-danger"></i>
-                </a>
-            </div>
-
-            <!-- Modal Pencarian -->
-            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="searchModalLabel">Cari Produk</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
-                              <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <nav class="navbar navbar-expand-lg" style="background-color: #ff71a3;">
-        <div class="container justify-content-center">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenu"
-                aria-controls="submenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="submenu">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="index.html">Beranda</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="promo.html">Promo</a></li> -->
-                    <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="tentang_kami.html">Tentang Kami</a></li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle text-white link-danger opacity-75" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Produk
-                      </a>
-                      <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produkDropdown">
-                        <li><a class="dropdown-item" href="produk.html">Semua Produk</a></li>
-                        <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
-                        <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
-                        <li><a class="dropdown-item" href="buket_snack.html">Buket Snack</a></li>
-                      </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="kontak.html">Kontak</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+          </li>
+          <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div class="container py-5">
     <h2 class="mb-4">Checkout</h2>
 
@@ -144,103 +152,105 @@
   </div>
 
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-    <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body" id="toastMessage">
           Berhasil!
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
       </div>
     </div>
   </div>
 
   <footer style="background-color: #E91E63;" class="text-white pt-5">
-      <div class="container">
-        <div class="row text-start">
-          <!-- Kiri: Logo + Deskripsi -->
-          <div class="col-md-4 mb-4 d-flex flex-column align-items-start">
-            <div class="d-flex align-items-start gap-3 mb-3">
-              <img src="images/logo_elamore.jpg" alt="Elamore" width="70" class="rounded-circle border border-white shadow-sm">
-              <div>
-                <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif;">Elamore</h5>
-                <small class="text-white-50">Flowers & Gifts</small>
-              </div>
-            </div>
-            <p class="small text-white-50" style="max-width: 270px;">
-              Hadiahkan momen tak terlupakan.<br>
-              Pilih buket terbaik dari Elamore 💐
-            </p>
-          </div>
-
-          <!-- Tengah: Navigasi -->
-          <div class="col-md-4 mb-4">
-            <h6 class="fw-bold">Navigasi</h6>
-            <ul class="list-unstyled small">
-              <li><a href="produk.html" class="text-white text-decoration-none">Semua Produk</a></li>
-              <li><a href="buket_bunga.html" class="text-white text-decoration-none">Buket Bunga</a></li>
-              <li><a href="buket_uang.html" class="text-white text-decoration-none">Buket Uang</a></li>
-              <li><a href="buket_snack.html" class="text-white text-decoration-none">Buket Snack</a></li>
-              <!-- <li><a href="promo.html" class="text-white text-decoration-none">Promo</a></li> -->
-              <li><a href="kontak.html" class="text-white text-decoration-none">Kontak Kami</a></li>
-            </ul>
-          </div>
-
-          <!-- Kanan: Sosial Media & Pembayaran -->
-          <div class="col-md-4 mb-4">
-            <h6 class="fw-bold">Temukan Kami:</h6>
-            <div class="d-flex gap-3 mb-3">
-              <a href="https://www.facebook.com/share/1HBDb4Zytb" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
-              <a href="https://www.instagram.com/elamore.official" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
-              <a href="https://wa.me/message/KLMMIHHJQBHTE1" class="text-white"><i class="bi bi-whatsapp fs-5"></i></a>
-            </div>
-            <h6 class="fw-bold">Metode Pembayaran:</h6>
-            <div class="d-flex flex-wrap gap-2">
-              <img src="images/logo-bca.jpg" class="rounded" alt="BCA" width="45">
-              <img src="images/logo-bni.png" class="rounded" alt="BNI" width="45">
-              <img src="images/logo-mandiri.png" class="rounded" alt="Mandiri" width="45">
-              <img src="images/logo-dana.jpg" class="rounded" alt="DANA" width="45">
-              <img src="images/logo-gopay.png" class="rounded" alt="GOPAY" width="45">
-              <!-- <img src="images/bni.png" alt="BNI" width="45"> -->
+    <div class="container">
+      <div class="row text-start">
+        <!-- Kiri: Logo + Deskripsi -->
+        <div class="col-md-4 mb-4 d-flex flex-column align-items-start">
+          <div class="d-flex align-items-start gap-3 mb-3">
+            <img src="images/logo_elamore.jpg" alt="Elamore" width="70"
+              class="rounded-circle border border-white shadow-sm">
+            <div>
+              <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif;">Elamore</h5>
+              <small class="text-white-50">Flowers & Gifts</small>
             </div>
           </div>
+          <p class="small text-white-50" style="max-width: 270px;">
+            Hadiahkan momen tak terlupakan.<br>
+            Pilih buket terbaik dari Elamore 💐
+          </p>
         </div>
 
-        <!-- Copyright -->
-        <div class="border-top border-light mt-3 pt-3 pb-3 text-center position-relative">
-          <small class="text-white-50">
-            &copy; 2025 Elamore. All rights reserved.
-          </small>
+        <!-- Tengah: Navigasi -->
+        <div class="col-md-4 mb-4">
+          <h6 class="fw-bold">Navigasi</h6>
+          <ul class="list-unstyled small">
+            <li><a href="produk.html" class="text-white text-decoration-none">Semua Produk</a></li>
+            <li><a href="buket_bunga.html" class="text-white text-decoration-none">Buket Bunga</a></li>
+            <li><a href="buket_uang.html" class="text-white text-decoration-none">Buket Uang</a></li>
+            <li><a href="buket_snack.html" class="text-white text-decoration-none">Buket Snack</a></li>
+            <!-- <li><a href="promo.html" class="text-white text-decoration-none">Promo</a></li> -->
+            <li><a href="kontak.html" class="text-white text-decoration-none">Kontak Kami</a></li>
+          </ul>
+        </div>
 
-          <!-- Link Admin disembunyikan -->
-          <!-- <a href="admin_login.html" style="color: #E91E63;">admin</a> -->
+        <!-- Kanan: Sosial Media & Pembayaran -->
+        <div class="col-md-4 mb-4">
+          <h6 class="fw-bold">Temukan Kami:</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="https://www.facebook.com/share/1HBDb4Zytb" class="text-white"><i
+                class="bi bi-facebook fs-5"></i></a>
+            <a href="https://www.instagram.com/elamore.official" class="text-white"><i
+                class="bi bi-instagram fs-5"></i></a>
+            <a href="https://wa.me/message/KLMMIHHJQBHTE1" class="text-white"><i class="bi bi-whatsapp fs-5"></i></a>
+          </div>
+          <h6 class="fw-bold">Metode Pembayaran:</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <img src="images/logo-bca.jpg" class="rounded" alt="BCA" width="45">
+            <img src="images/logo-bni.png" class="rounded" alt="BNI" width="45">
+            <img src="images/logo-mandiri.png" class="rounded" alt="Mandiri" width="45">
+            <img src="images/logo-dana.jpg" class="rounded" alt="DANA" width="45">
+            <img src="images/logo-gopay.png" class="rounded" alt="GOPAY" width="45">
+            <!-- <img src="images/bni.png" alt="BNI" width="45"> -->
+          </div>
         </div>
       </div>
-    </footer>
+
+      <!-- Copyright -->
+      <div class="border-top border-light mt-3 pt-3 pb-3 text-center position-relative">
+        <small class="text-white-50">
+          &copy; 2025 Elamore. All rights reserved.
+        </small>
+      </div>
+    </div>
+  </footer>
 
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".bi-person-circle").forEach(icon => {
-          icon.addEventListener("click", function (e) {
-            e.preventDefault();
-            const userRaw = localStorage.getItem("elamoreUser");
-            let userId = null;
+      document.querySelectorAll(".bi-person-circle").forEach(icon => {
+        icon.addEventListener("click", function (e) {
+          e.preventDefault();
+          const userRaw = localStorage.getItem("elamoreUser");
+          let userId = null;
 
-            try {
-              const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
-              userId = elamoreUser?.id || null;
-            } catch (err) {
-              console.warn("Gagal membaca localStorage:", err);
-            }
+          try {
+            const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
+            userId = elamoreUser?.id || null;
+          } catch (err) {
+            console.warn("Gagal membaca localStorage:", err);
+          }
 
-            if (userId) {
-              window.location.href = "akun_user.html";
-            } else {
-              window.location.href = "login.html";
-            }
-          });
+          if (userId) {
+            window.location.href = "akun_user.html";
+          } else {
+            window.location.href = "login.html";
+          }
         });
+      });
     });
 
     const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
@@ -298,88 +308,89 @@
             total_harga: totalHarga,
           }),
         })
-        .then(res => res.json())
-        .then(data => {
-          showToast("Pesanan berhasil! Silakan hubungi penjual via WhatsApp untuk menyelesaikan pembayaran.", "success");
-          window.location.href = "akun_user.html";
-        });
+          .then(res => res.json())
+          .then(data => {
+            showToast("Pesanan berhasil! Silakan hubungi penjual via WhatsApp untuk menyelesaikan pembayaran.", "success");
+            window.location.href = "akun_user.html";
+          });
       });
     });
 
     // Desktop
-  document.getElementById("btnSearchDesktop").addEventListener("click", function () {
-    const keyword = document.getElementById("searchDesktop").value.trim();
-    if (keyword) {
-      window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
-    }
-  });
-
-  document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      document.getElementById("btnSearchDesktop").click();
-    }
-  });
-
-  // Mobile
-  document.getElementById("btnSearchMobile").addEventListener("click", function () {
-    const keyword = document.getElementById("searchMobile").value.trim();
-    if (keyword) {
-      // Tutup modal dulu
-      const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
-      modal.hide();
-      setTimeout(() => {
+    document.getElementById("btnSearchDesktop").addEventListener("click", function () {
+      const keyword = document.getElementById("searchDesktop").value.trim();
+      if (keyword) {
         window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
-      }, 300);
+      }
+    });
+
+    document.getElementById("searchDesktop").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("btnSearchDesktop").click();
+      }
+    });
+
+    // Mobile
+    document.getElementById("btnSearchMobile").addEventListener("click", function () {
+      const keyword = document.getElementById("searchMobile").value.trim();
+      if (keyword) {
+        // Tutup modal dulu
+        const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+        modal.hide();
+        setTimeout(() => {
+          window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+        }, 300);
+      }
+    });
+
+    document.getElementById("searchMobile").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("btnSearchMobile").click();
+      }
+    });
+
+    const TIMEOUT = 30 * 60 * 1000; // 30 menit dalam milidetik
+
+    function perbaruiAktivitas() {
+      localStorage.setItem("elamoreLastActive", Date.now());
     }
-  });
 
-  document.getElementById("searchMobile").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      document.getElementById("btnSearchMobile").click();
+    function cekAutoLogout() {
+      const user = localStorage.getItem("elamoreUser");
+      const last = localStorage.getItem("elamoreLastActive");
+
+      if (user && last && Date.now() - last > TIMEOUT) {
+        localStorage.removeItem("elamoreUser");
+        localStorage.removeItem("elamoreLastActive");
+        window.location.href = "login.html";
+      }
     }
-  });
 
-  const TIMEOUT = 30 * 60 * 1000; // 30 menit dalam milidetik
+    // Simpan waktu aktif saat halaman dimuat pertama kali
+    perbaruiAktivitas();
 
-  function perbaruiAktivitas() {
-    localStorage.setItem("elamoreLastActive", Date.now());
-  }
+    // Setiap aktivitas akan memperbarui waktu
+    ["click", "mousemove", "keypress", "scroll", "touchstart"].forEach(event =>
+      window.addEventListener(event, perbaruiAktivitas)
+    );
 
-  function cekAutoLogout() {
-    const user = localStorage.getItem("elamoreUser");
-    const last = localStorage.getItem("elamoreLastActive");
+    // Cek apakah waktunya logout setiap menit
+    setInterval(cekAutoLogout, 60000);
 
-    if (user && last && Date.now() - last > TIMEOUT) {
-      localStorage.removeItem("elamoreUser");
-      localStorage.removeItem("elamoreLastActive");
-      window.location.href = "login.html";
+    function showToast(pesan, warna = "success") {
+      const toastElement = document.getElementById("toastNotifikasi");
+      const toastBody = document.getElementById("toastMessage");
+
+      toastBody.textContent = pesan;
+      toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
+
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
     }
-  }
-
-  // Simpan waktu aktif saat halaman dimuat pertama kali
-  perbaruiAktivitas();
-
-  // Setiap aktivitas akan memperbarui waktu
-  ["click", "mousemove", "keypress", "scroll", "touchstart"].forEach(event =>
-    window.addEventListener(event, perbaruiAktivitas)
-  );
-
-  // Cek apakah waktunya logout setiap menit
-  setInterval(cekAutoLogout, 60000);
-
-  function showToast(pesan, warna = "success") {
-  const toastElement = document.getElementById("toastNotifikasi");
-  const toastBody = document.getElementById("toastMessage");
-
-  toastBody.textContent = pesan;
-  toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
-
-  const toast = new bootstrap.Toast(toastElement);
-  toast.show();
-}
 
   </script>
 </body>
+
 </html>

@@ -1,268 +1,250 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Produk - Elamore</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produk - Elamore</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
 
-    <style>
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
+  <style>
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
 
-        .hover-shadow:hover {
-            box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
-            transform: translateY(-4px);
-        }
+    .hover-shadow:hover {
+      box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+    }
 
-        .transition {
-            transition: all 0.3s ease-in-out;
-        }
-    </style>
+    .transition {
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
 </head>
+
 <body style="background-color: #feedf3;">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E91E63;">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="images/logo_elamore.jpg" alt="Logo" width="40" height="40" class="rounded-circle me-2">
-                <span>Elamore</span>
-            </a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E91E63;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logo_elamore.jpg" alt="Logo" width="40" height="40" class="rounded-circle me-2">
+        <span>Elamore</span>
+      </a>
 
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <div class="d-flex" style="width: 40%;">
-                  <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchBar">
-                  <button class="btn btn-light" type="button" id="btnSearch">Cari</button>
-                </div>
-            </div>
-
-            <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
-            <ul class="navbar-nav ms-auto d-none d-lg-flex flex-row gap-2">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.facebook.com/share/1HBDb4Zytb/"><i class="bi bi-facebook fs-5 text-white link-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.instagram.com/elamore.official?igsh=ZDI2Ym1lb21lZGQx"><i class="bi bi-instagram fs-5 text-white link-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="wa.me/message/KLMMIHHJQBHTE1"><i class="bi bi-whatsapp fs-5 text-white link-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link position-relative" href="keranjang.html">
-                        <i class="bi bi-cart fs-5 text-white link-danger"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html"><i class="bi bi-person-circle fs-5 text-white link-danger"></i></a>
-                </li>
-            </ul>
-
-            <!-- Ikon Pencarian, Keranjang, dan Login untuk Mobile -->
-            <div class="d-flex d-lg-none align-items-center gap-3">
-                <!-- Ikon Pencarian -->
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
-                    <i class="bi bi-search fs-5 text-white link-danger"></i>
-                </a>
-
-                <!-- Ikon Keranjang -->
-                <a class="nav-link position-relative" href="keranjang.html">
-                    <i class="bi bi-cart fs-5 text-white link-danger"></i>
-                </a>
-
-                <!-- Ikon Login -->
-                <a class="nav-link" href="login.html">
-                    <i class="bi bi-person-circle fs-5 text-white link-danger"></i>
-                </a>
-            </div>
-
-            <!-- Modal Pencarian -->
-            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="searchModalLabel">Cari Produk</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
-                              <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="d-flex" style="width: 40%;">
+          <input class="form-control me-2" type="search" placeholder="Cari buket..." aria-label="Search" id="searchBar">
+          <button class="btn btn-light" type="button" id="btnSearch">Cari</button>
         </div>
-    </nav>
+      </div>
 
-    <nav class="navbar navbar-expand-lg" style="background-color: #ff71a3;">
-        <div class="container justify-content-center">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenu"
-                aria-controls="submenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="submenu">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="index.html">Beranda</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="promo.html">Promo</a></li> -->
-                    <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="tentang_kami.html">Tentang Kami</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Produk
-                        </a>
-                        <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produkDropdown">
-                          <li><a class="dropdown-item" href="produk.html">Semua Produk</a></li>
-                          <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
-                          <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
-                          <li><a class="dropdown-item" href="buket_snack.html">Buket Snack</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="kontak.html">Kontak</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <section id="jenis-buket" class=" mt-5 min-vh-100">
-        <div class="container">
-          <h2 class="text-center text-danger fw-bold mb-5">Semua Produk</h2>
-          
-          <div class="row mb-4">
-            <div class="col-md-4 ms-auto">
-              <select id="filterHarga" class="form-select">
-                <option value="default">Urutkan berdasarkan</option>
-                <option value="asc">Harga Termurah</option>
-                <option value="desc">Harga Termahal</option>
-              </select>
-            </div>
-          </div>          
+      <!-- Ikon Media Sosial & Keranjang untuk Desktop -->
+      <ul class="navbar-nav ms-auto d-none d-lg-flex flex-row gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.facebook.com/share/1HBDb4Zytb/"><i
+              class="bi bi-facebook fs-5 text-white link-danger"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com/elamore.official?igsh=ZDI2Ym1lb21lZGQx"><i
+              class="bi bi-instagram fs-5 text-white link-danger"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="wa.me/message/KLMMIHHJQBHTE1"><i
+              class="bi bi-whatsapp fs-5 text-white link-danger"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link position-relative" href="keranjang.html">
+            <i class="bi bi-cart fs-5 text-white link-danger"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="bi bi-person-circle fs-5 text-white link-danger"></i></a>
+        </li>
+      </ul>
 
-          <!-- Card Section -->
-          <div class="mb-5">
-            <div class="row g-4" id="produk-container">
-              <p class="text-center">Memuat produk...</p>
+      <!-- Ikon Pencarian, Keranjang, dan Login untuk Mobile -->
+      <div class="d-flex d-lg-none align-items-center gap-3">
+        <!-- Ikon Pencarian -->
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <i class="bi bi-search fs-5 text-white link-danger"></i>
+        </a>
+
+        <!-- Ikon Keranjang -->
+        <a class="nav-link position-relative" href="keranjang.html">
+          <i class="bi bi-cart fs-5 text-white link-danger"></i>
+        </a>
+
+        <!-- Ikon Login -->
+        <a class="nav-link" href="login.html">
+          <i class="bi bi-person-circle fs-5 text-white link-danger"></i>
+        </a>
+      </div>
+
+      <!-- Modal Pencarian -->
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="searchModalLabel">Cari Produk</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Cari produk..." id="searchMobile">
+                <button class="btn btn-danger" type="button" id="btnSearchMobile">Cari</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-      <div id="elamoreToast" class="toast align-items-center text-white bg-success border-0 d-none" role="alert">
-        <div class="d-flex">
-          <div class="toast-body" id="elamoreToastMsg">Berhasil!</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" onclick="hideToast()"></button>
         </div>
       </div>
     </div>
+  </nav>
 
-    <footer style="background-color: #E91E63;" class="text-white pt-5">
-      <div class="container">
-        <div class="row text-start">
-          <!-- Kiri: Logo + Deskripsi -->
-          <div class="col-md-4 mb-4 d-flex flex-column align-items-start">
-            <div class="d-flex align-items-start gap-3 mb-3">
-              <img src="images/logo_elamore.jpg" alt="Elamore" width="70" class="rounded-circle border border-white shadow-sm">
-              <div>
-                <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif;">Elamore</h5>
-                <small class="text-white-50">Flowers & Gifts</small>
-              </div>
-            </div>
-            <p class="small text-white-50" style="max-width: 270px;">
-              Hadiahkan momen tak terlupakan.<br>
-              Pilih buket terbaik dari Elamore 💐
-            </p>
-          </div>
-
-          <!-- Tengah: Navigasi -->
-          <div class="col-md-4 mb-4">
-            <h6 class="fw-bold">Navigasi</h6>
-            <ul class="list-unstyled small">
-              <li><a href="produk.html" class="text-white text-decoration-none">Semua Produk</a></li>
-              <li><a href="buket_bunga.html" class="text-white text-decoration-none">Buket Bunga</a></li>
-              <li><a href="buket_uang.html" class="text-white text-decoration-none">Buket Uang</a></li>
-              <li><a href="buket_snack.html" class="text-white text-decoration-none">Buket Snack</a></li>
-              <!-- <li><a href="promo.html" class="text-white text-decoration-none">Promo</a></li> -->
-              <li><a href="kontak.html" class="text-white text-decoration-none">Kontak Kami</a></li>
+  <nav class="navbar navbar-expand-lg" style="background-color: #ff71a3;">
+    <div class="container justify-content-center">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenu"
+        aria-controls="submenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="submenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="index.html">Beranda</a></li>
+          <!-- <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="promo.html">Promo</a></li> -->
+          <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="tentang_kami.html">Tentang
+              Kami</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="produkDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Produk
+            </a>
+            <ul class="dropdown-menu" style="background-color: #E91E63;" aria-labelledby="produkDropdown">
+              <li><a class="dropdown-item" href="produk.html">Semua Produk</a></li>
+              <li><a class="dropdown-item" href="buket_bunga.html">Buket Bunga</a></li>
+              <li><a class="dropdown-item" href="buket_uang.html">Buket Uang</a></li>
+              <li><a class="dropdown-item" href="buket_snack.html">Buket Snack</a></li>
             </ul>
-          </div>
+          </li>
+          <li class="nav-item"><a class="nav-link text-white link-danger opacity-75" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-          <!-- Kanan: Sosial Media & Pembayaran -->
-          <div class="col-md-4 mb-4">
-            <h6 class="fw-bold">Temukan Kami:</h6>
-            <div class="d-flex gap-3 mb-3">
-              <a href="https://www.facebook.com/share/1HBDb4Zytb" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
-              <a href="https://www.instagram.com/elamore.official" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
-              <a href="https://wa.me/message/KLMMIHHJQBHTE1" class="text-white"><i class="bi bi-whatsapp fs-5"></i></a>
-            </div>
-            <h6 class="fw-bold">Metode Pembayaran:</h6>
-            <div class="d-flex flex-wrap gap-2">
-              <img src="images/logo-bca.jpg" class="rounded" alt="BCA" width="45">
-              <img src="images/logo-bni.png" class="rounded" alt="BNI" width="45">
-              <img src="images/logo-mandiri.png" class="rounded" alt="Mandiri" width="45">
-              <img src="images/logo-dana.jpg" class="rounded" alt="DANA" width="45">
-              <img src="images/logo-gopay.png" class="rounded" alt="GOPAY" width="45">
-              <!-- <img src="images/bni.png" alt="BNI" width="45"> -->
-            </div>
-          </div>
-        </div>
+  <section id="jenis-buket" class=" mt-5 min-vh-100">
+    <div class="container">
+      <h2 class="text-center text-danger fw-bold mb-5">Semua Produk</h2>
 
-        <!-- Copyright -->
-        <div class="border-top border-light mt-3 pt-3 pb-3 text-center position-relative">
-          <small class="text-white-50">
-            &copy; 2025 Elamore. All rights reserved.
-          </small>
-
-          <!-- Link Admin disembunyikan -->
-          <!-- <a href="admin_login.html" style="color: #E91E63;">admin</a> -->
+      <div class="row mb-4">
+        <div class="col-md-4 ms-auto">
+          <select id="filterHarga" class="form-select">
+            <option value="default">Urutkan berdasarkan</option>
+            <option value="asc">Harga Termurah</option>
+            <option value="desc">Harga Termahal</option>
+          </select>
         </div>
       </div>
-    </footer>
 
-    <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
-    <script>
-        // document.getElementById('produk').addEventListener('click', function(event) {
-        //     // Jika klik dilakukan pada elemen dengan id 'produk', arahkan ke produk.html
-        //     window.location.href = 'produk.html';
-        // });
+      <!-- Card Section -->
+      <div class="mb-5">
+        <div class="row g-4" id="produk-container">
+          <p class="text-center">Memuat produk...</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Ambil semua tombol favorite
-        // const favoriteButtons = document.querySelectorAll('.btn[title="Tambah ke Favorit"]');
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div id="elamoreToast" class="toast align-items-center text-white bg-success border-0 d-none" role="alert">
+      <div class="d-flex">
+        <div class="toast-body" id="elamoreToastMsg">Berhasil!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" onclick="hideToast()"></button>
+      </div>
+    </div>
+  </div>
 
-        // favoriteButtons.forEach(button => {
-        //   button.addEventListener('click', () => {
-        //     const icon = button.querySelector('i');
+  <footer style="background-color: #E91E63;" class="text-white pt-5">
+    <div class="container">
+      <div class="row text-start">
+        <!-- Kiri: Logo + Deskripsi -->
+        <div class="col-md-4 mb-4 d-flex flex-column align-items-start">
+          <div class="d-flex align-items-start gap-3 mb-3">
+            <img src="images/logo_elamore.jpg" alt="Elamore" width="70"
+              class="rounded-circle border border-white shadow-sm">
+            <div>
+              <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif;">Elamore</h5>
+              <small class="text-white-50">Flowers & Gifts</small>
+            </div>
+          </div>
+          <p class="small text-white-50" style="max-width: 270px;">
+            Hadiahkan momen tak terlupakan.<br>
+            Pilih buket terbaik dari Elamore 💐
+          </p>
+        </div>
 
-        //     // Toggle class ikon dari bi-heart ke bi-heart-fill dan sebaliknya
-        //     if (icon.classList.contains('bi-heart')) {
-        //       icon.classList.remove('bi-heart');
-        //       icon.classList.add('bi-heart-fill');
-        //       icon.classList.add('text-danger'); // warna merah
-        //     } else {
-        //       icon.classList.remove('bi-heart-fill');
-        //       icon.classList.remove('text-danger');
-        //       icon.classList.add('bi-heart');
-        //     }
-        //   });
-        // });
+        <!-- Tengah: Navigasi -->
+        <div class="col-md-4 mb-4">
+          <h6 class="fw-bold">Navigasi</h6>
+          <ul class="list-unstyled small">
+            <li><a href="produk.html" class="text-white text-decoration-none">Semua Produk</a></li>
+            <li><a href="buket_bunga.html" class="text-white text-decoration-none">Buket Bunga</a></li>
+            <li><a href="buket_uang.html" class="text-white text-decoration-none">Buket Uang</a></li>
+            <li><a href="buket_snack.html" class="text-white text-decoration-none">Buket Snack</a></li>
+            <!-- <li><a href="promo.html" class="text-white text-decoration-none">Promo</a></li> -->
+            <li><a href="kontak.html" class="text-white text-decoration-none">Kontak Kami</a></li>
+          </ul>
+        </div>
 
-        const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
-        const userId = elamoreUser?.id || null;
+        <!-- Kanan: Sosial Media & Pembayaran -->
+        <div class="col-md-4 mb-4">
+          <h6 class="fw-bold">Temukan Kami:</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="https://www.facebook.com/share/1HBDb4Zytb" class="text-white"><i
+                class="bi bi-facebook fs-5"></i></a>
+            <a href="https://www.instagram.com/elamore.official" class="text-white"><i
+                class="bi bi-instagram fs-5"></i></a>
+            <a href="https://wa.me/message/KLMMIHHJQBHTE1" class="text-white"><i class="bi bi-whatsapp fs-5"></i></a>
+          </div>
+          <h6 class="fw-bold">Metode Pembayaran:</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <img src="images/logo-bca.jpg" class="rounded" alt="BCA" width="45">
+            <img src="images/logo-bni.png" class="rounded" alt="BNI" width="45">
+            <img src="images/logo-mandiri.png" class="rounded" alt="Mandiri" width="45">
+            <img src="images/logo-dana.jpg" class="rounded" alt="DANA" width="45">
+            <img src="images/logo-gopay.png" class="rounded" alt="GOPAY" width="45">
+            <!-- <img src="images/bni.png" alt="BNI" width="45"> -->
+          </div>
+        </div>
+      </div>
 
-        let semuaProduk = [];
+      <!-- Copyright -->
+      <div class="border-top border-light mt-3 pt-3 pb-3 text-center position-relative">
+        <small class="text-white-50">
+          &copy; 2025 Elamore. All rights reserved.
+        </small>
+      </div>
+    </div>
+  </footer>
 
-        function tampilkanProduk(produkArray) {
-          const row = document.getElementById("produk-container");
-          row.innerHTML = "";
+  <script src="assets\bootstrap\js\bootstrap.bundle.min.js"></script>
+  <script>
+    const elamoreUser = JSON.parse(localStorage.getItem("elamoreUser"));
+    const userId = elamoreUser?.id || null;
 
-          if (produkArray.length === 0) {
-            row.innerHTML = `<div class="col text-center text-muted">Produk tidak ditemukan.</div>`;
-            return;
-          }
+    let semuaProduk = [];
 
-          produkArray.forEach(product => {
-            row.innerHTML += `
+    function tampilkanProduk(produkArray) {
+      const row = document.getElementById("produk-container");
+      row.innerHTML = "";
+
+      if (produkArray.length === 0) {
+        row.innerHTML = `<div class="col text-center text-muted">Produk tidak ditemukan.</div>`;
+        return;
+      }
+
+      produkArray.forEach(product => {
+        row.innerHTML += `
               <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 hover-shadow transition" data-id="${product.id}">
                   <button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" title="Tambah ke Favorit">
@@ -276,122 +258,122 @@
                   </div>
                 </div>
               </div>`;
-          });
+      });
 
-          setTimeout(() => {
-            // Tombol Favorit
-            document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
-              btn.addEventListener("click", () => {
-                if (!userId) return showToast("Silakan login terlebih dahulu", true);
-                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
+      setTimeout(() => {
+        // Tombol Favorit
+        document.querySelectorAll('[title="Tambah ke Favorit"]').forEach((btn, index) => {
+          btn.addEventListener("click", () => {
+            if (!userId) return showToast("Silakan login terlebih dahulu", true);
+            const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-                fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                  body: JSON.stringify({ user_id: userId, product_id: productId }),
-                }).then(res => res.json())
-                  .then(() => {
-                    const icon = btn.querySelector("i");
-                    icon.classList.remove("bi-heart");
-                    icon.classList.add("bi-heart-fill", "text-danger");
-                  });
+            fetch("https://elamore-backend-production.up.railway.app/api/favorites", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify({ user_id: userId, product_id: productId }),
+            }).then(res => res.json())
+              .then(() => {
+                const icon = btn.querySelector("i");
+                icon.classList.remove("bi-heart");
+                icon.classList.add("bi-heart-fill", "text-danger");
               });
-            });
-
-            // Tombol Keranjang
-            document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
-              btn.addEventListener("click", () => {
-                if (!userId) return showToast("Silakan login terlebih dahulu", true);
-                const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
-
-                fetch("https://elamore-backend-production.up.railway.app/api/cart", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                  body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
-                }).then(res => res.json())
-                  .then(() => showToast("Produk berhasil ditambahkan ke keranjang."));
-              });
-            });
-          }, 300);
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".bi-person-circle").forEach(icon => {
-          icon.addEventListener("click", function (e) {
-            e.preventDefault();
-            const userRaw = localStorage.getItem("elamoreUser");
-            let userId = null;
-
-            try {
-              const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
-              userId = elamoreUser?.id || null;
-            } catch (err) {
-              console.warn("Gagal membaca localStorage:", err);
-            }
-
-            if (userId) {
-              window.location.href = "akun_user.html";
-            } else {
-              window.location.href = "login.html";
-            }
           });
         });
 
-        fetch("https://elamore-backend-production.up.railway.app/api/products")
-          .then(response => response.json())
-          .then(products => {
-            semuaProduk = products;
+        // Tombol Keranjang
+        document.querySelectorAll(".btn-outline-danger").forEach((btn, index) => {
+          btn.addEventListener("click", () => {
+            if (!userId) return showToast("Silakan login terlebih dahulu", true);
+            const productId = document.querySelectorAll(".card")[index].getAttribute("data-id");
 
-            // Ambil parameter q dari URL jika ada
-            const params = new URLSearchParams(window.location.search);
-            const keyword = params.get("q")?.toLowerCase();
-
-            let hasil = semuaProduk;
-
-            if (keyword) {
-              hasil = semuaProduk.filter(p =>
-                p.nama_produk.toLowerCase().includes(keyword) ||
-                p.kategori.toLowerCase().includes(keyword)
-              );
-
-              // Ganti judul menjadi hasil pencarian
-              const h2 = document.querySelector("h2.text-danger");
-              if (h2) h2.innerText = `Hasil pencarian untuk: "${keyword}"`;
-            }
-
-            tampilkanProduk(hasil);
+            fetch("https://elamore-backend-production.up.railway.app/api/cart", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 }),
+            }).then(res => res.json())
+              .then(() => showToast("Produk berhasil ditambahkan ke keranjang."));
           });
+        });
+      }, 300);
+    }
 
-        document.getElementById("filterHarga").addEventListener("change", function () {
-          const selected = this.value;
-          let hasil = [...semuaProduk];
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".bi-person-circle").forEach(icon => {
+        icon.addEventListener("click", function (e) {
+          e.preventDefault();
+          const userRaw = localStorage.getItem("elamoreUser");
+          let userId = null;
 
-          if (selected === "asc") {
-            hasil.sort((a, b) => a.harga - b.harga);
-          } else if (selected === "desc") {
-            hasil.sort((a, b) => b.harga - a.harga);
+          try {
+            const elamoreUser = userRaw ? JSON.parse(userRaw) : null;
+            userId = elamoreUser?.id || null;
+          } catch (err) {
+            console.warn("Gagal membaca localStorage:", err);
+          }
+
+          if (userId) {
+            window.location.href = "akun_user.html";
+          } else {
+            window.location.href = "login.html";
+          }
+        });
+      });
+
+      fetch("https://elamore-backend-production.up.railway.app/api/products")
+        .then(response => response.json())
+        .then(products => {
+          semuaProduk = products;
+
+          // Ambil parameter q dari URL jika ada
+          const params = new URLSearchParams(window.location.search);
+          const keyword = params.get("q")?.toLowerCase();
+
+          let hasil = semuaProduk;
+
+          if (keyword) {
+            hasil = semuaProduk.filter(p =>
+              p.nama_produk.toLowerCase().includes(keyword) ||
+              p.kategori.toLowerCase().includes(keyword)
+            );
+
+            // Ganti judul menjadi hasil pencarian
+            const h2 = document.querySelector("h2.text-danger");
+            if (h2) h2.innerText = `Hasil pencarian untuk: "${keyword}"`;
           }
 
           tampilkanProduk(hasil);
         });
-      });
 
-      // Pencarian produk dari dalam halaman produk.html
-      document.getElementById("btnSearch").addEventListener("click", function () {
-        const keyword = document.getElementById("searchBar").value.trim();
-        if (keyword) {
-          window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+      document.getElementById("filterHarga").addEventListener("change", function () {
+        const selected = this.value;
+        let hasil = [...semuaProduk];
+
+        if (selected === "asc") {
+          hasil.sort((a, b) => a.harga - b.harga);
+        } else if (selected === "desc") {
+          hasil.sort((a, b) => b.harga - a.harga);
         }
-      });
 
-      document.getElementById("searchBar").addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          document.getElementById("btnSearch").click();
-        }
+        tampilkanProduk(hasil);
       });
+    });
 
-      function showToast(message, isError = false) {
+    // Pencarian produk dari dalam halaman produk.html
+    document.getElementById("btnSearch").addEventListener("click", function () {
+      const keyword = document.getElementById("searchBar").value.trim();
+      if (keyword) {
+        window.location.href = `produk.html?q=${encodeURIComponent(keyword)}`;
+      }
+    });
+
+    document.getElementById("searchBar").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("btnSearch").click();
+      }
+    });
+
+    function showToast(message, isError = false) {
       const toast = document.getElementById("elamoreToast");
       const toastMsg = document.getElementById("elamoreToastMsg");
 
@@ -409,6 +391,7 @@
       toast.classList.add("d-none");
     }
 
-    </script>
+  </script>
 </body>
+
 </html>

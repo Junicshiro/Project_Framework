@@ -1,13 +1,14 @@
-<!-- manajemen_produk.html -->
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manajemen Pengguna - Elamore</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" />
 </head>
+
 <body style="background-color: #feedf3;">
 
   <!-- Navbar -->
@@ -29,9 +30,9 @@
     <div class="offcanvas-body">
       <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="admin_dashboard.html" class="nav-link text-white active link-danger opacity-75">
-                <i class="bi bi-house-door me-2"></i> Dashboard
-            </a>
+          <a href="admin_dashboard.html" class="nav-link text-white active link-danger opacity-75">
+            <i class="bi bi-house-door me-2"></i> Dashboard
+          </a>
         </li>
         <li class="nav-item">
           <a href="manajemen_produk.html" class="nav-link text-white active link-danger opacity-75">
@@ -78,12 +79,12 @@
               <th>Nama</th>
               <th>Email</th>
               <th>Nomor</th>
-              
+
               <th>Aksi</th>
             </tr>
           </thead>
           <tbody id="user-list">
-            
+
           </tbody>
         </table>
       </div>
@@ -92,57 +93,60 @@
     <!-- Tampilkan hanya di perangkat mobile -->
     <div class="d-block d-sm-none px-3" id="user-cards">
 
-      
+
     </div>
   </div>
 
   <!-- Modal Edit Pengguna -->
-<div class="modal fade" id="modalEditUser" tabindex="-1" aria-labelledby="modalEditUserLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="formEditUser" class="modal-content">
-      <div class="modal-header bg-warning text-dark">
-        <h5 class="modal-title" id="modalEditUserLabel">Edit Pengguna</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="editUserId">
-        <div class="mb-3">
-          <label for="editUserName" class="form-label">Nama</label>
-          <input type="text" id="editUserName" class="form-control" required>
+  <div class="modal fade" id="modalEditUser" tabindex="-1" aria-labelledby="modalEditUserLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="formEditUser" class="modal-content">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title" id="modalEditUserLabel">Edit Pengguna</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="mb-3">
-          <label for="editUserEmail" class="form-label">Email</label>
-          <input type="email" id="editUserEmail" class="form-control" required>
+        <div class="modal-body">
+          <input type="hidden" id="editUserId">
+          <div class="mb-3">
+            <label for="editUserName" class="form-label">Nama</label>
+            <input type="text" id="editUserName" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="editUserEmail" class="form-label">Email</label>
+            <input type="email" id="editUserEmail" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="editUserNomor" class="form-label">Nomor HP</label>
+            <input type="text" id="editUserNomor" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="editUserAlamat" class="form-label">Alamat</label>
+            <textarea id="editUserAlamat" class="form-control" rows="2"></textarea>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="editUserNomor" class="form-label">Nomor HP</label>
-          <input type="text" id="editUserNomor" class="form-control">
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning">Simpan</button>
         </div>
-        <div class="mb-3">
-          <label for="editUserAlamat" class="form-label">Alamat</label>
-          <textarea id="editUserAlamat" class="form-control" rows="2"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-warning">Simpan</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-  <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body" id="toastMessage">
-        Berhasil!
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </form>
     </div>
   </div>
-</div>
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div id="toastNotifikasi" class="toast align-items-center text-bg-success border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMessage">
+          Berhasil!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal Konfirmasi Hapus Pengguna -->
-  <div class="modal fade" id="modalKonfirmasiHapusUser" tabindex="-1" aria-labelledby="modalHapusUserLabel" aria-hidden="true">
+  <div class="modal fade" id="modalKonfirmasiHapusUser" tabindex="-1" aria-labelledby="modalHapusUserLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow">
         <div class="modal-header bg-danger text-white">
@@ -166,31 +170,31 @@
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-document.addEventListener("DOMContentLoaded", loadUsers);
-function loadUsers() {
-  const query = document.getElementById("searchUser").value.toLowerCase();
+    document.addEventListener("DOMContentLoaded", loadUsers);
+    function loadUsers() {
+      const query = document.getElementById("searchUser").value.toLowerCase();
 
-  fetch("https://elamore-backend-production.up.railway.app/api/users")
-    .then(res => res.json())
-    .then(users => {
-      const tbody = document.getElementById("user-list");
-      const cards = document.getElementById("user-cards");
-      tbody.innerHTML = "";
-      cards.innerHTML = "";
+      fetch("https://elamore-backend-production.up.railway.app/api/users")
+        .then(res => res.json())
+        .then(users => {
+          const tbody = document.getElementById("user-list");
+          const cards = document.getElementById("user-cards");
+          tbody.innerHTML = "";
+          cards.innerHTML = "";
 
-      const filtered = users.filter(user =>
-        user.name.toLowerCase().includes(query) ||
-        user.email.toLowerCase().includes(query)
-      );
+          const filtered = users.filter(user =>
+            user.name.toLowerCase().includes(query) ||
+            user.email.toLowerCase().includes(query)
+          );
 
-      if (filtered.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6">Tidak ada pengguna ditemukan.</td></tr>';
-        return;
-      }
+          if (filtered.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6">Tidak ada pengguna ditemukan.</td></tr>';
+            return;
+          }
 
-      filtered.forEach(user => {
-      // Tampilkan ke tabel desktop
-      tbody.innerHTML += `
+          filtered.forEach(user => {
+            // Tampilkan ke tabel desktop
+            tbody.innerHTML += `
         <tr>
           <td>USR-${String(user.id).padStart(3, "0")}</td>
           <td>${user.name}</td>
@@ -204,8 +208,8 @@ function loadUsers() {
         </tr>
       `;
 
-      // Tampilkan ke kartu mobile
-      cards.innerHTML += `
+            // Tampilkan ke kartu mobile
+            cards.innerHTML += `
         <div class="card mb-3 shadow-sm border-0" style="border-radius: 12px;">
           <div class="card-body">
             <h6 class="card-title fw-bold mb-2 text-truncate">Pengguna #USR-${String(user.id).padStart(3, "0")}</h6>
@@ -220,121 +224,122 @@ function loadUsers() {
           </div>
         </div>
       `;
+          });
+
+        });
+
+    }
+
+    // Tampilkan modal edit
+    function editUser(id) {
+      fetch(`https://elamore-backend-production.up.railway.app/api/users`)
+        .then(res => res.json())
+        .then(users => {
+          const user = users.find(u => u.id === id);
+          if (!user) return;
+
+          document.getElementById("editUserId").value = user.id;
+          document.getElementById("editUserName").value = user.name;
+          document.getElementById("editUserEmail").value = user.email;
+          document.getElementById("editUserNomor").value = user.nomor || "";
+          document.getElementById("editUserAlamat").value = user.alamat || "";
+
+          new bootstrap.Modal(document.getElementById("modalEditUser")).show();
+        });
+    }
+
+    // Submit edit
+    document.getElementById("formEditUser").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const id = document.getElementById("editUserId").value;
+      const data = {
+        name: document.getElementById("editUserName").value,
+        email: document.getElementById("editUserEmail").value,
+        nomor: document.getElementById("editUserNomor").value,
+        alamat: document.getElementById("editUserAlamat").value
+      };
+
+      const res = await fetch(`https://elamore-backend-production.up.railway.app/api/users/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+
+      if (res.ok) {
+        showToast("Berhasil diubah!", "success");
+        bootstrap.Modal.getInstance(document.getElementById("modalEditUser")).hide();
+        loadUsers();
+      } else {
+        showToast("Gagal: " + (result?.message || "Terjadi kesalahan"), "danger");
+      }
     });
 
+    // Hapus user
+    let userUntukDihapus = null;
+
+    function hapusUser(id) {
+      userUntukDihapus = id;
+      const modal = new bootstrap.Modal(document.getElementById("modalKonfirmasiHapusUser"));
+      modal.show();
+    }
+
+    document.getElementById("btnKonfirmasiHapusUser").addEventListener("click", function () {
+      if (!userUntukDihapus) return;
+
+      showToast("Menghapus pengguna...", "warning");
+
+      fetch(`https://elamore-backend-production.up.railway.app/api/users/${userUntukDihapus}`, {
+        method: "DELETE"
+      })
+        .then(res => {
+          if (!res.ok) throw new Error("Gagal menghapus pengguna.");
+          return res.json();
+        })
+        .then(() => {
+          showToast("Pengguna berhasil dihapus!", "success");
+          loadUsers();
+        })
+        .catch(() => {
+          showToast("Terjadi kesalahan saat menghapus pengguna.", "danger");
+        })
+        .finally(() => {
+          const modal = bootstrap.Modal.getInstance(document.getElementById("modalKonfirmasiHapusUser"));
+          modal.hide();
+          userUntukDihapus = null;
+        });
     });
 
-}
 
-// Tampilkan modal edit
-function editUser(id) {
-  fetch(`https://elamore-backend-production.up.railway.app/api/users`)
-    .then(res => res.json())
-    .then(users => {
-      const user = users.find(u => u.id === id);
-      if (!user) return;
+    // Panggil saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", loadUsers);
 
-      document.getElementById("editUserId").value = user.id;
-      document.getElementById("editUserName").value = user.name;
-      document.getElementById("editUserEmail").value = user.email;
-      document.getElementById("editUserNomor").value = user.nomor || "";
-      document.getElementById("editUserAlamat").value = user.alamat || "";
-
-      new bootstrap.Modal(document.getElementById("modalEditUser")).show();
+    document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
+      e.preventDefault();
+      // Hapus data admin dari localStorage
+      localStorage.removeItem("elamoreAdmin");
+      // Redirect ke halaman login admin
+      window.location.href = "admin_login.html";
     });
-}
 
-// Submit edit
-document.getElementById("formEditUser").addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const id = document.getElementById("editUserId").value;
-  const data = {
-    name: document.getElementById("editUserName").value,
-    email: document.getElementById("editUserEmail").value,
-    nomor: document.getElementById("editUserNomor").value,
-    alamat: document.getElementById("editUserAlamat").value
-  };
+    const admin = localStorage.getItem("elamoreAdmin");
+    if (!admin) {
+      window.location.href = "admin_login.html"; // Redirect jika belum login
+    }
 
-  const res = await fetch(`https://elamore-backend-production.up.railway.app/api/users/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify(data)
-  });
-  const result = await res.json();
+    function showToast(pesan, warna = "success") {
+      const toastElement = document.getElementById("toastNotifikasi");
+      const toastBody = document.getElementById("toastMessage");
 
-  if (res.ok) {
-    showToast("Berhasil diubah!", "success");
-    bootstrap.Modal.getInstance(document.getElementById("modalEditUser")).hide();
-    loadUsers();
-  } else {
-    showToast("Gagal: " + (result?.message || "Terjadi kesalahan"), "danger");
-  }
-});
+      toastBody.textContent = pesan;
+      toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
 
-// Hapus user
-let userUntukDihapus = null;
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
+    }
 
-function hapusUser(id) {
-  userUntukDihapus = id;
-  const modal = new bootstrap.Modal(document.getElementById("modalKonfirmasiHapusUser"));
-  modal.show();
-}
-
-document.getElementById("btnKonfirmasiHapusUser").addEventListener("click", function () {
-  if (!userUntukDihapus) return;
-
-  showToast("Menghapus pengguna...", "warning");
-
-  fetch(`https://elamore-backend-production.up.railway.app/api/users/${userUntukDihapus}`, {
-    method: "DELETE"
-  })
-  .then(res => {
-    if (!res.ok) throw new Error("Gagal menghapus pengguna.");
-    return res.json();
-  })
-  .then(() => {
-    showToast("Pengguna berhasil dihapus!", "success");
-    loadUsers();
-  })
-  .catch(() => {
-    showToast("Terjadi kesalahan saat menghapus pengguna.", "danger");
-  })
-  .finally(() => {
-    const modal = bootstrap.Modal.getInstance(document.getElementById("modalKonfirmasiHapusUser"));
-    modal.hide();
-    userUntukDihapus = null;
-  });
-});
-
-
-// Panggil saat halaman dimuat
-document.addEventListener("DOMContentLoaded", loadUsers);
-
-document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
-  e.preventDefault();
-  // Hapus data admin dari localStorage
-  localStorage.removeItem("elamoreAdmin");
-  // Redirect ke halaman login admin
-  window.location.href = "admin_login.html";
-});
-
-const admin = localStorage.getItem("elamoreAdmin");
-  if (!admin) {
-    window.location.href = "admin_login.html"; // Redirect jika belum login
-  }
-
-  function showToast(pesan, warna = "success") {
-  const toastElement = document.getElementById("toastNotifikasi");
-  const toastBody = document.getElementById("toastMessage");
-
-  toastBody.textContent = pesan;
-  toastElement.className = `toast align-items-center text-bg-${warna} border-0`;
-
-  const toast = new bootstrap.Toast(toastElement);
-  toast.show();
-}
-
-</script>
+  </script>
 
 </body>
+
 </html>

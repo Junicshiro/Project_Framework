@@ -1,13 +1,14 @@
-<!-- manajemen_produk.html -->
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manajemen Pesanan - Elamore</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" />
 </head>
+
 <body style="background-color: #feedf3;">
 
   <!-- Navbar -->
@@ -29,9 +30,9 @@
     <div class="offcanvas-body">
       <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="admin_dashboard.html" class="nav-link text-white active link-danger opacity-75">
-                <i class="bi bi-house-door me-2"></i> Dashboard
-            </a>
+          <a href="admin_dashboard.html" class="nav-link text-white active link-danger opacity-75">
+            <i class="bi bi-house-door me-2"></i> Dashboard
+          </a>
         </li>
         <li class="nav-item">
           <a href="manajemen_produk.html" class="nav-link text-white active link-danger opacity-75">
@@ -61,80 +62,48 @@
   <div class="min-vh-100">
     <div class="container-fluid px-4 py-4">
       <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2><i class="bi bi-bag"></i> Manajemen Pesanan</h2>
+        <h2><i class="bi bi-bag"></i> Manajemen Pesanan</h2>
       </div>
 
       <div class="row g-3 mb-3">
-          <div class="col-md-6">
-              <input type="text" class="form-control" id="searchPesanan" placeholder="Cari nama atau ID pesanan...">
-          </div>
-          <div class="col-md-6">
-              <select class="form-select" id="filterStatus">
-                  <option selected>Filter Status</option>
-                  <option value="pending">Pending</option>
-                  <option value="confirmed">Confirmed</option>
-                  <option value="shipped">Shipped</option>
-                  <option value="delivered">Delivered</option>
-                  <option value="canceled">Canceled</option>
-              </select>
-          </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="searchPesanan" placeholder="Cari nama atau ID pesanan...">
+        </div>
+        <div class="col-md-6">
+          <select class="form-select" id="filterStatus">
+            <option selected>Filter Status</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="canceled">Canceled</option>
+          </select>
+        </div>
       </div>
 
       <div class="table-responsive d-none d-sm-block">
-          <table class="table table-hover table-bordered text-center align-middle">
-              <thead class="table-danger">
-                  <tr>
-                      <th>ID Pesanan</th>
-                      <th>Gambar</th>
-                      <th>Nama Pelanggan</th>
-                      <th>Tanggal</th>
-                      <th>Total</th>
-                      <th>Status</th>
-                      <th>Aksi</th>
-                  </tr>
-              </thead>
-              <tbody id="pesananBody">
-                  <!-- <tr>
-                      <td>ORD-1001</td>
-                      <td>
-                        <img src="images/buket_bunga/buket_bunga.jpg" alt="Buket Mawar Merah" class="mx-auto d-block" style="width: 60px; height: auto; border-radius: 8px;">
-                      </td>
-                      <td>Andi</td>
-                      <td>2025-04-08</td>
-                      <td>Rp 350.000</td>
-                      <td>
-                          <button class="btn btn-success btn-sm me-2"><i class="bi bi-check-circle"></i></button>
-                          <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></button>
-                      </td>
-                  </tr> -->
-              </tbody>
-          </table>
+        <table class="table table-hover table-bordered text-center align-middle">
+          <thead class="table-danger">
+            <tr>
+              <th>ID Pesanan</th>
+              <th>Gambar</th>
+              <th>Nama Pelanggan</th>
+              <th>Tanggal</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="pesananBody">
+
+          </tbody>
+        </table>
       </div>
     </div>
 
     <!-- Tampilkan hanya di perangkat mobile -->
     <div class="d-block d-sm-none px-3" id="pesananMobile">
 
-      <!-- Pesanan 1 -->
-      <!-- <div class="card mb-3 shadow-sm border-0" style="border-radius: 12px;">
-        <div class="row g-0 align-items-center">
-          <div class="col-4 ps-2">
-            <img src="images/buket_bunga/buket_bunga.jpg" class="img-fluid rounded" alt="Buket Mawar Merah" style="border-radius: 10px;">
-          </div>
-          <div class="col-8">
-            <div class="card-body p-2">
-              <h6 class="card-title fw-bold mb-1 text-truncate">Pesanan #ORD-1001</h6>
-              <div class="small text-muted mb-1">Pelanggan: <span class="text-dark">Andi</span></div>
-              <div class="small text-muted mb-1">Tanggal: <span class="text-dark">2025-04-08</span></div>
-              <div class="small text-muted mb-1">Total: <span class="text-success fw-semibold">Rp 350.000</span></div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-sm btn-outline-success flex-fill"><i class="bi bi-check-circle"></i> Konfirmasi</button>
-                <button class="btn btn-sm btn-outline-danger flex-fill"><i class="bi bi-x-circle"></i> Tolak</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 
@@ -144,47 +113,47 @@
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-  const API = "https://elamore-backend-production.up.railway.app/api/orders";
-  let semuaPesanan = [];
+    const API = "https://elamore-backend-production.up.railway.app/api/orders";
+    let semuaPesanan = [];
 
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch(API)
-      .then(res => res.json())
-      .then(orders => {
-        semuaPesanan = orders;
-        renderPesanan(); // render pertama kali
-      });
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch(API)
+        .then(res => res.json())
+        .then(orders => {
+          semuaPesanan = orders;
+          renderPesanan(); // render pertama kali
+        });
 
-    // Tambahkan listener untuk pencarian & filter
-    document.getElementById("searchPesanan").addEventListener("input", renderPesanan);
-    document.getElementById("filterStatus").addEventListener("change", renderPesanan);
-  });
+      // Tambahkan listener untuk pencarian & filter
+      document.getElementById("searchPesanan").addEventListener("input", renderPesanan);
+      document.getElementById("filterStatus").addEventListener("change", renderPesanan);
+    });
 
-  // Fungsi untuk merender pesanan berdasarkan pencarian & filter
-  function renderPesanan() {
-    const tbody = document.getElementById("pesananBody");
-    const mobile = document.getElementById("pesananMobile");
-    const keyword = document.getElementById("searchPesanan").value.toLowerCase();
-    const filter = document.getElementById("filterStatus").value.toLowerCase();
+    // Fungsi untuk merender pesanan berdasarkan pencarian & filter
+    function renderPesanan() {
+      const tbody = document.getElementById("pesananBody");
+      const mobile = document.getElementById("pesananMobile");
+      const keyword = document.getElementById("searchPesanan").value.toLowerCase();
+      const filter = document.getElementById("filterStatus").value.toLowerCase();
 
-    tbody.innerHTML = "";
-    mobile.innerHTML = "";
+      tbody.innerHTML = "";
+      mobile.innerHTML = "";
 
-    semuaPesanan
-      .filter(order => {
-        const cocokKeyword =
-          order.nama.toLowerCase().includes(keyword) ||
-          `ord-${order.id}`.includes(keyword);
-        const cocokFilter = filter === "filter status" || order.status.toLowerCase() === filter;
-        return cocokKeyword && cocokFilter;
-      })
-      .forEach(order => {
-        const item = order.items[0];
-        const total = order.total_harga.toLocaleString("id-ID");
+      semuaPesanan
+        .filter(order => {
+          const cocokKeyword =
+            order.nama.toLowerCase().includes(keyword) ||
+            `ord-${order.id}`.includes(keyword);
+          const cocokFilter = filter === "filter status" || order.status.toLowerCase() === filter;
+          return cocokKeyword && cocokFilter;
+        })
+        .forEach(order => {
+          const item = order.items[0];
+          const total = order.total_harga.toLocaleString("id-ID");
 
-        // Desktop row
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
+          // Desktop row
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
           <td>ORD-${order.id}</td>
           <td><img src="${item.product.gambar}" style="width: 60px; border-radius: 8px;"></td>
           <td>${order.nama}</td>
@@ -195,12 +164,12 @@
             ${renderActionButtons(order.id, order.status)}
           </td>
         `;
-        tbody.appendChild(tr);
+          tbody.appendChild(tr);
 
-        // Mobile card
-        const card = document.createElement("div");
-        card.className = "card mb-3 shadow-sm border-0";
-        card.innerHTML = `
+          // Mobile card
+          const card = document.createElement("div");
+          card.className = "card mb-3 shadow-sm border-0";
+          card.innerHTML = `
           <div class="row g-0 align-items-center">
             <div class="col-4 ps-2">
               <img src="${item.product.gambar}" class="img-fluid rounded" style="border-radius: 10px;">
@@ -219,26 +188,26 @@
             </div>
           </div>
         `;
-        mobile.appendChild(card);
-      });
-  }
-
-  // Badge status warna
-  function getBadgeClass(status) {
-    switch (status) {
-      case "pending": return "bg-secondary text-white";
-      case "confirmed": return "bg-warning text-dark";
-      case "shipped": return "bg-primary text-white";
-      case "delivered": return "bg-success text-white";
-      case "canceled": return "bg-danger text-white";
-      default: return "bg-light text-dark";
+          mobile.appendChild(card);
+        });
     }
-  }
 
-  // Tombol aksi
-  function renderActionButtons(orderId, status, isMobile = false) {
-    if (status === "pending") {
-      return `
+    // Badge status warna
+    function getBadgeClass(status) {
+      switch (status) {
+        case "pending": return "bg-secondary text-white";
+        case "confirmed": return "bg-warning text-dark";
+        case "shipped": return "bg-primary text-white";
+        case "delivered": return "bg-success text-white";
+        case "canceled": return "bg-danger text-white";
+        default: return "bg-light text-dark";
+      }
+    }
+
+    // Tombol aksi
+    function renderActionButtons(orderId, status, isMobile = false) {
+      if (status === "pending") {
+        return `
         <button class="btn btn-sm btn-success me-2" onclick="ubahStatus(${orderId}, 'confirmed')">
           <i class="bi bi-check-circle"></i> ${isMobile ? 'Konfirmasi' : ''}
         </button>
@@ -246,9 +215,9 @@
           <i class="bi bi-x-circle"></i> ${isMobile ? 'Tolak' : ''}
         </button>
       `;
-    }
-    if (status === "confirmed") {
-      return `
+      }
+      if (status === "confirmed") {
+        return `
         <button class="btn btn-sm btn-primary me-2" onclick="ubahStatus(${orderId}, 'shipped')">
           <i class="bi bi-truck"></i> ${isMobile ? 'Kirim' : ''}
         </button>
@@ -256,56 +225,57 @@
           <i class="bi bi-x-circle"></i> ${isMobile ? 'Batal' : ''}
         </button>
       `;
-    }
-    if (status === "shipped") {
-      return `
+      }
+      if (status === "shipped") {
+        return `
         <button class="btn btn-sm btn-success me-2" onclick="ubahStatus(${orderId}, 'delivered')">
           <i class="bi bi-check-circle"></i> ${isMobile ? 'Selesai' : 'Selesai'}
         </button>
       `;
+      }
+      if (status === "delivered") {
+        return `<span class="badge bg-success">Selesai</span>`;
+      }
+      if (status === "canceled") {
+        return `<span class="badge bg-secondary">Dibatalkan</span>`;
+      }
+      return `<span class="badge bg-light text-dark">${status}</span>`;
     }
-    if (status === "delivered") {
-      return `<span class="badge bg-success">Selesai</span>`;
-    }
-    if (status === "canceled") {
-      return `<span class="badge bg-secondary">Dibatalkan</span>`;
-    }
-    return `<span class="badge bg-light text-dark">${status}</span>`;
-  }
 
-  // Update status ke Laravel
-  function ubahStatus(orderId, statusBaru) {
-    fetch(`https://elamore-backend-production.up.railway.app/api/orders/${orderId}/status`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ status: statusBaru })
-    })
-      .then(res => res.json())
-      .then(() => {
-        // Update tanpa reload penuh
-        const index = semuaPesanan.findIndex(o => o.id === orderId);
-        if (index !== -1) semuaPesanan[index].status = statusBaru;
-        renderPesanan();
-      });
-  }
+    // Update status ke Laravel
+    function ubahStatus(orderId, statusBaru) {
+      fetch(`https://elamore-backend-production.up.railway.app/api/orders/${orderId}/status`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({ status: statusBaru })
+      })
+        .then(res => res.json())
+        .then(() => {
+          // Update tanpa reload penuh
+          const index = semuaPesanan.findIndex(o => o.id === orderId);
+          if (index !== -1) semuaPesanan[index].status = statusBaru;
+          renderPesanan();
+        });
+    }
 
-  document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
-        e.preventDefault();
-        // Hapus data admin dari localStorage
-        localStorage.removeItem("elamoreAdmin");
-        // Redirect ke halaman login admin
-        window.location.href = "admin_login.html";
+    document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
+      e.preventDefault();
+      // Hapus data admin dari localStorage
+      localStorage.removeItem("elamoreAdmin");
+      // Redirect ke halaman login admin
+      window.location.href = "admin_login.html";
     });
 
-  const admin = localStorage.getItem("elamoreAdmin");
-  if (!admin) {
-    window.location.href = "admin_login.html"; // Redirect jika belum login
-  }
+    const admin = localStorage.getItem("elamoreAdmin");
+    if (!admin) {
+      window.location.href = "admin_login.html"; // Redirect jika belum login
+    }
   </script>
 
 
 </body>
+
 </html>
