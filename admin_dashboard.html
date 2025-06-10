@@ -101,36 +101,115 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row mt-5">
+        <div class="col-md-8 mb-4">
+            <div class="card">
+                <div class="card-header bg-danger text-white">Pendapatan 6 Bulan Terakhir</div>
+                <div class="card-body">
+                    <canvas id="grafikPendapatan"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-danger text-white">Status Pesanan</div>
+                <div class="card-body">
+                    <canvas id="grafikPesanan"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://elamore-backend-production.up.railway.app/api/admin/summary")
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("totalProduk").innerText = data.produk;
+                    document.getElementById("totalPesanan").innerText = data.pesanan;
+                    document.getElementById("totalPengguna").innerText = data.pengguna;
+                    document.getElementById("totalPendapatan").innerText =
+                        "Rp " + Number(data.pendapatan).toLocaleString("id-ID");
+                });
+        });
 
-        <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                fetch("https://elamore-backend-production.up.railway.app/api/admin/summary")
-                    .then(res => res.json())
-                    .then(data => {
-                        document.getElementById("totalProduk").innerText = data.produk;
-                        document.getElementById("totalPesanan").innerText = data.pesanan;
-                        document.getElementById("totalPengguna").innerText = data.pengguna;
-                        document.getElementById("totalPendapatan").innerText =
-                            "Rp " + Number(data.pendapatan).toLocaleString("id-ID");
+        document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
+            e.preventDefault();
+            // Hapus data admin dari localStorage
+            localStorage.removeItem("elamoreAdmin");
+            // Redirect ke halaman login admin
+            window.location.href = "admin_login.html";
+        });
+
+        const admin = localStorage.getItem("elamoreAdmin");
+        if (!admin) {
+            window.location.href = "admin_login.html"; // Redirect jika belum login
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://elamore-backend-production.up.railway.app/api/admin/summary")
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("totalProduk").innerText = data.produk;
+                    document.getElementById("totalPesanan").innerText = data.pesanan;
+                    document.getElementById("totalPengguna").innerText = data.pengguna;
+                    document.getElementById("totalPendapatan").innerText = "Rp " + Number(data.pendapatan).toLocaleString("id-ID");
+
+                    // 🔴 Grafik Pendapatan Line
+                    new Chart(document.getElementById("grafikPendapatan"), {
+                        type: "line",
+                        data: {
+                            labels: data.bulan, // ['Jan', 'Feb', ...]
+                            datasets: [{
+                                label: "Rp",
+                                data: data.pendapatan_bulanan, // [1000000, 2000000, ...]
+                                fill: false,
+                                borderColor: "#E91E63",
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false }
+                            }
+                        }
                     });
-            });
 
-            document.getElementById("btnLogoutAdmin").addEventListener("click", function (e) {
-                e.preventDefault();
-                // Hapus data admin dari localStorage
-                localStorage.removeItem("elamoreAdmin");
-                // Redirect ke halaman login admin
-                window.location.href = "admin_login.html";
-            });
-
-            const admin = localStorage.getItem("elamoreAdmin");
-            if (!admin) {
-                window.location.href = "admin_login.html"; // Redirect jika belum login
-            }
-        </script>
+                    // 🔴 Grafik Pesanan Donut
+                    new Chart(document.getElementById("grafikPesanan"), {
+                        type: "doughnut",
+                        data: {
+                            labels: ["Pending", "Confirmed", "Shipped", "Delivered", "Canceled"],
+                            datasets: [{
+                                data: [
+                                    data.status.pesanan_pending,
+                                    data.status.pesanan_confirmed,
+                                    data.status.pesanan_shipped,
+                                    data.status.pesanan_delivered,
+                                    data.status.pesanan_canceled,
+                                ],
+                                backgroundColor: [
+                                    "#6c757d", "#ffc107", "#0d6efd", "#198754", "#dc3545"
+                                ]
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: "bottom"
+                                }
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
 
 </body>
 
