@@ -380,7 +380,9 @@
 
       if (!user) {
         showToast("Silahkan login terlebih dahulu!", "danger");
-        window.location.href = "login.html";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000); // 3000 milidetik = 3 detik
         return;
       }
 

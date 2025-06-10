@@ -309,7 +309,9 @@
           .then(res => res.json())
           .then(data => {
             showToast("Pesanan berhasil! Silakan hubungi penjual via WhatsApp untuk menyelesaikan pembayaran.", "success");
-            window.location.href = "akun_user.html";
+            setTimeout(() => {
+              window.location.href = "akun_user.html";
+            }, 3000); // 3000 milidetik = 3 detik
           });
       });
     });
